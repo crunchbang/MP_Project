@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Brief Description}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Problem Formulation}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Dataset}{3}{section.2}
+\contentsline {section}{\numberline {3}Proposed Plan of Execution}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Phase 1}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Phase 2}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Phase 3}{4}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Phase 4}{4}{subsection.3.4}
+\contentsline {section}{\numberline {4}Main Challenges}{4}{section.4}
+\contentsline {section}{\numberline {5}Learning Objectives}{5}{section.5}
