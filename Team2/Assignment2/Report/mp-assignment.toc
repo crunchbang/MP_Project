@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}A. Segmentation}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Observations}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Inference}{2}{subsection.1.2}
+\contentsline {section}{\numberline {2}B. Panorama}{3}{section.2}
+\contentsline {section}{\numberline {3}C. Bike vs Horse Classification}{4}{section.3}
+\contentsline {section}{\numberline {4}D. Car Vs Non Car Classification}{5}{section.4}
+\contentsline {section}{\numberline {5}E. Object Recognition }{6}{section.5}
