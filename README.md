@@ -1,38 +1,19 @@
-# MP_Project
-Placeholder description 
+# Vechicle Driving Assistant
 
-# Gradient Descent
+This project aims to provide a comprehensive set of assistance features to aid the driver (or autonomous vehicle) to drive safely. This includes a number of indicator and cues regarding the environment.
 
-1. https://en.wikipedia.org/wiki/Gradient_descent
+* [Project Proposal](https://github.com/crunchbang/MP_Project/blob/master/Documents/Project_Proposal/Group7.pdf)
 
-# Newtons Methods
 
-1. https://www.youtube.com/watch?v=28BMpgxn_Ec
-2. https://www.youtube.com/watch?v=42zJ5xrdOqo
 
-# Logistic Regression
+### Stuff used to make this:
 
-1. https://www.youtube.com/watch?v=-Z2a_mzl9LM
 
-## Papers in Deep Learning
+ * [Python 3](https://www.python.org/downloads/)
+ * [OpenCV 3](http://opencv.org/downloads.html)
 
-1. https://github.com/terryum/awesome-deep-learning-papers
+----
 
-# Types of Classification Algorithms
+All the code in this repo can be executed and tested with Python 3.x.
 
-1. Maximum likelihood Classifier
-2. Minimum Distance to Means
-3. Parallelepiped Classifier
-4. Mahalanobis Distance
-5. Binary Encoding
-6. K-Nearest Neighbour
-7. Decision Tree
-8. Neural Network
-9. Segmentation based classification
-10. Random Forest
-11. Support Vector Machine
-12. Genetic Algorithms
-13. Bayesian classification
-14. Fuzzy classification
-15. Knowledge based classification
-16. Linear Mixture Model
+Use [Anaconda](https://anaconda.org/) for a hassle-free installation of Python3 & OpenCV3.
