@@ -1,4 +1,4 @@
-# Vechicle Driving Assistant
+# Vehicle Driving Assistant
 
 This project aims to provide a comprehensive set of assistance features to aid the driver (or autonomous vehicle) to drive safely. This includes a number of indicator and cues regarding the environment.
 
