@@ -1,0 +1,70 @@
+links :
+
+1. https://medium.com/@mimoralea/getting-started-with-nvidia-gpu-anaconda-tensorflow-and-keras-on-arch-linux-8f5f2868a455
+2. http://www.nvidia.com/object/gpu-accelerated-applications-tensorflow-installation.html
+
+
+Installing cuda cuda toolkit and cudaDNN
+
+1. yaourt -S nvidia nvidia-utils cuda
+2. sudo tar -xvf cudnn-8.0-linux-x64-v5.1-rc.tgz -C /usr/local 
+
+
+Installing Anaconda
+
+1. https://www.continuum.io/downloads
+
+1. chmod 755 Anaconda3-4.3.1-Linux-x86_64.sh
+2. ./Anaconda3-4.3.1-Linux-x86_64.sh
+
+3. conda install python=3.5.2
+4. conda install -c menpo opencv3=3.2.0
+5. conda create -n testenv python=3.5 # creating a environmnet for anaconda
+6. source activate testenv # to log into the test env
+
+Installing tensorflow
+
+https://www.tensorflow.org/versions/r0.12/get_started/os_setup
+
+7. export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-linux_x86_64.whl\n
+8. pip install --upgrade $TF_BINARY_URL
+9. export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64"
+10. export CUDA_HOME=/opt/cuda
+
+.bashrc
+
+# added by Anaconda3 4.3.1 installer
+export PATH="/home/atoffy/anaconda3/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/opt/cuda
+
+.zshrc
+#export PATH=/home/atoffy/anaconda3/bin:$PATH
+export PATH=$PATH:/home/atoffy/anaconda3/bin:$HOME/bin:/usr/local/bin
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/opt/cuda
+
+http://www.nvidia.com/object/gpu-accelerated-applications-tensorflow-installation.html
+http://blog.mrtanke.com/2016/10/25/Install-and-Configure-GPU-enabled-TensorFlow-using-Anaconda/
+
+
+In [1]: import keras
+Using TensorFlow backend.
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcublas.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcudnn.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcufft.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcurand.so locally
+
+
+In [1]: import tensorflow
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcublas.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcudnn.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcufft.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcurand.so locally
+
+
+Issues :
+http://stackoverflow.com/questions/40110207/anaconda-opencv-arch-linux-libselinux-so-error
+http://stackoverflow.com/questions/30170468/how-to-run-spyder-in-virtual-environment
