@@ -1,0 +1,112 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{IIIT-B_logo.jpg}\par\vspace{1cm}
+	{\scshape\LARGE International Institute of Information Technology Bangalore \par}
+	\vspace{1cm}
+	{\scshape\Large Project Progress Report\par}
+	{\Large DS/NC/ESD 863 Machine Perception\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Vehicle Driving Assistant \par}
+	\vspace{2cm}	   
+	{\Large\itshape Akanksha Dwivedi - MT2016006\par}
+	{\Large\itshape Anoop Toffy - MT2016016\par}
+	{\Large\itshape Athul Suresh - MT2016030\par}
+	{\Large\itshape Tarini Chandrashekhar - MT2016144\par}
+	\vfill
+	{\huge Group 7 \par}
+	\vfill
+	Guide : \par
+	Prof. Dinesh Babu Jayagopi 
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+\newpage
+
+\section{Problem Statement}
+The project aims to provide a comprehensive set of assistance features to aid the driver (or autonomous vehicle) to drive safely. This includes a number of indicators about the environment, the major cue being detection of potholes in the road ahead.
+
+
+\section{Motivation}
+Autonomous vehicles has been a common term in our day to day life with car manufacturers like Tesla shipping cars that are SAE Level 3. While these vehicles include a slew of features such as parking assistance and cruise control, they've mostly been tailored to foreign roads. Potholes, and the abundance of them, is something that is unique to our Indian roads. We believe that successful detection of potholes from visual images can be applied in a variety of scenarios.
+Moreover, the sheer variety in the color, shape and size of potholes makes this problem an apt candidate to be solved using modern machine learning techniques. 
+
+\section{Related Works}
+
+
+\section{Progress so far (Dataset, description of approach(features,modelling))}
+We started out with the naive approach - try to detect the potholes directly from pictures using image processing techniques. We got a collected a small dataset from Google images and applied classic techniques like edge and contour detection. The problem with Google images of potholes is that they're heavily biased - the potholes are shown in such a way that it is the center of attraction in the picture, with good lighting and clear demarcation from the environment. While our technique worked for a limited subset, the results were far from satisfactory. We got too much noise and too little usable data to go on. Detecting potholes, which may be large or small, circular or quadrilateral, filled with liquid or dust and overall varied in nature, was not a straightforward problem.
+
+In order to get dataset that is rooted in the real world, we went out and recorded 360p video of the roads in and around Electronic City phase 2. We managed to get about 20 minutes of footage of varying terrains with diverse features that are commonly encountered on Indian roads. The footage was preprocessed to reduce jitter induced in the video due to it being recorded by the pillion rider of a moving motorcycle. 
+
+Collected data: \url{ https://youtu.be/hmeBmdZzlLU }
+
+We expected the detection of potholes to be simplified if a localized area in the image can be found where the chance of occurrence of the pothole is relatively high. In essence, we decided to extract the road from the surrounding environment.
+
+In order to remove the external environment and extract the road from the given frame, we tried a variety of techniques. 
+
+\begin{itemize}
+
+\item Choose a channel
+    We had to come up with an input representation where the difference between the road and the surrounding was accentuatted. We tried Grayscale images but the contrast wasn't enough to facilitate extraction. Much better results were found by converting the frame to HSV colorspace. We tried each channel in isolation and got satisfactory results with the S and V channels. 
+
+\item Remove Noise
+    Now that we had a channel to work on, wee had to reduce the amount of noise in the frame. Between Gaussian Blur and Median Blur, we got better results with Median Blur with a relatively large kernel size to reduce the noise inherent in the picture. 
+
+\item Threshold to get a suitable mask
+    Now that we had a denoised version of the channel with maximum variance between the road and surrounding, we applied Otzu's thresholding to extract the part of the image containing the road. We got a relatively good output but there was still noise in the threshold mask.
+    
+\item Clean up the mask
+    (EXPLAIN MORPHOLOGICAL TRANSFORMATION)There were still stray islands in the mask, i.e small localized black(white) regions within the white(black) areas. In order to even these out, we used the following two morphological transformation methods in succession -
+    ** Closing : It is dialation followed by erosion. It is useful in closing small holes inside the foreground objects, or small black points on the object.
+    ** Opening : It is erosion followed by dialation. It is useful in removing noise from the black areas.
+    We used a relatively large kernel for both the operations to get a fairly clean mask.
+    
+\item Application of mask
+    The obtained mask was applied on the original image and the road was extracted out. 
+
+    Mask applied on collected dataset: YOUTUBE LINK.
+    
+\end{itemize}
+
+\section{Future Work}
+EXPAND on these  - 
+\begin{itemize}
+\item feature extraction
+\item Application of standard ML algorithms
+\item Comparative analysis of obtained results.
+\end{itemize}
+
+
+\begin{thebibliography}{9}
+\bibitem{paperone} 
+S Nienaber*, M Booysen* AND R Kroon**.
+\textit{Detecting potholes using simple image processing techniques and Real-world Footage}. 
+*Department of E\&E Engineering, Stellenbosch University.
+**Computer Science Division, Stellenbosch University
+ 
+\bibitem{papertwo} 
+Ajit Danti, Jyoti Y. Kulkarni, and P. S. Hiremath, Member, IACSIT
+\textit{An Image Processing Approach to Detect Lanes, Pot Holes and Recognize Road Signs in Indian Roads}.
+
+\end{thebibliography}
+
+\end{document}
+
