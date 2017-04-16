@@ -5,6 +5,8 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{subfig}
+\usepackage{multirow}
 
 \begin{document}
 
@@ -49,10 +51,12 @@ Autonomous vehicles has been a common term in our day to day life with car manuf
 Moreover, the sheer variety in the color, shape and size of potholes makes this problem an apt candidate to be solved using modern machine learning techniques. 
 
 \section{Related Works}
-In Nienaber* et al(2015), discusses about pothole detection using basic image processing techniques in a constrained environment without relying on any machine learning techniques. It presents a good preliminary method for detecting potholes using a single camera within an range of 2 - 20m from a vehicle moving at a speed of not more than 60km/hr. The method separates a rectangular area of interest just above the hood of the vehicle which contains road surface, assuming that driver maintains a safe distance from the front vehicle. The rectangular area is separated by connecting the various farthest region interest connected using convex hull algorithm.
+In Nienaber et al(2015) \cite{paperone}, a system using basic image processing techniques in a constrained environment without relying on any machine learning techniques is used for pothole detection. It presents a good preliminary method for detecting potholes using a single camera within an range of 2 - 20m from a vehicle moving at a speed of not more than 60km/hr. The method separates a rectangular area of interest just above the hood of the vehicle which contains road surface, assuming that driver maintains a safe distance from the front vehicle. The rectangular area of interest is separated by connecting the various farthest region interest using convex hull algorithm.
+
+The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015) Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it make automated driving safe and easier in Indian roads. 
 
 
-\section{Progress so far (Dataset, description of approach(features, modelling))}
+\section{Progress}
 We started out with the naive approach - try to detect the potholes directly from pictures using image processing techniques. We got a collected a small dataset from Google images and applied classic techniques like edge and contour detection. The problem with Google images of potholes is that they're heavily biased - the potholes are shown in such a way that it is the center of attraction in the picture, with good lighting and clear demarcation from the environment. While our technique worked for a limited subset, the results were far from satisfactory. We got too much noise and too little usable data to go on. Detecting potholes, which may be large or small, circular or quadrilateral, filled with liquid or dust and overall varied in nature, was not a straightforward problem.
 
 In order to get dataset that is rooted in the real world, we went out and recorded 360p video of the roads in and around Electronic City phase 2. We managed to get about 20 minutes of footage of varying terrains with diverse features that are commonly encountered on Indian roads. The footage was preprocessed to reduce jitter induced in the video due to it being recorded by the pillion rider of a moving motorcycle. 
@@ -68,58 +72,111 @@ In order to remove the external environment and extract the road from the given 
 \item Choose a channel \\
     We had to come up with an input representation where the difference between the road and the surrounding was accentuated. We tried Grayscale images but the contrast wasn't enough to facilitate extraction. Much better results were found by converting the frame to HSV colorspace. We tried each channel in isolation and got satisfactory results with the S and V channels. 
 
- \begin{figure}[ht!]
-\centering
+ \begin{figure}[!ht]
+\begin{center}
+
 \begin{tabular}{ccc}
-\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
-\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
-\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
+\centering
+%\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
+%\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
+%\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
+\includegraphics[width = 6in]{images/rgb_hsv.png}
 \end{tabular}
 \caption{HSV channels for classic image}
+
+\end{center}
 \end{figure}
 
-\begin{figure}[ht!]
-\centering
-\begin{tabular}{ccc}
-\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue_cam.jpg}} &
-\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation_cam.jpg}} &
-\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance_cam.jpg}}
-\end{tabular}
-\caption{HSV channels for collected dataset}
-\end{figure}
-     
+%\begin{figure}[ht!]
+%\centering
+%\begin{tabular}{ccc}
+%\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue_cam.jpg}} &
+%\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation_cam.jpg}} &
+%\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance_cam.jpg}}
+%\end{tabular}
+%\caption{HSV channels for collected dataset}
+%\end{figure}
+%     
 
-
+\newpage
 \item Remove Noise \\
     Now that we had a channel to work on, wee had to reduce the amount of noise in the frame. Between Gaussian Blur and Median Blur, we got better results with Median Blur with a relatively large kernel size to reduce the noise inherent in the picture. 
 
 \item Threshold to get a suitable mask \\
     Now that we had a denoised version of the channel with maximum variance between the road and surrounding, we applied Otzu's thresholding to extract the part of the image containing the road. We got a relatively good output but there was still noise in the threshold mask.
+
+\begin{figure}[!ht]
+\begin{center}
+
+\begin{tabular}{ccc}
+\centering
+%\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
+%\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
+%\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
+\includegraphics[width = 3in]{images/otzu.png}
+\end{tabular}
+\caption{Thresholding to create a mask}
+
+\end{center}
+\end{figure}
+    
+\newpage
     
 \item Clean up the mask \\
     (EXPLAIN MORPHOLOGICAL TRANSFORMATION)There were still stray islands in the mask, i.e small localized black(white) regions within the white(black) areas. In order to even these out, we used the following two morphological transformation methods in succession -
     ** Closing : It is dialation followed by erosion. It is useful in closing small holes inside the foreground objects, or small black points on the object.
     ** Opening : It is erosion followed by dialation. It is useful in removing noise from the black areas.
     We used a relatively large kernel for both the operations to get a fairly clean mask.
+ 
+
+\begin{figure}[!ht]
+\begin{center}
+
+\begin{tabular}{ccc}
+\centering
+%\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
+%\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
+%\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
+\includegraphics[width = 3in]{images/closing_opening.png}
+\end{tabular}
+\caption{Opening and Closing to clean up the mask}
+
+\end{center}
+\end{figure} 
     
 \item Application of mask \\
     The obtained mask was applied on the original image and the road was extracted out. 
 
+\begin{figure}[!ht]
+\begin{center}
+
+\begin{tabular}{ccc}
+\centering
+%\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
+%\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
+%\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
+\includegraphics[width = 3in]{images/out.png}
+\end{tabular}
+\caption{Application of mask}
+
+\end{center}
+\end{figure} 
+
     Mask applied on collected dataset: YOUTUBE LINK.
     
- \item Classic methods for edge detection
+\item Classic methods for edge detection
  
  We initially used some classic methods like k-means and meanshift for edge detection. While it worked good with the Google images, because of the zoomed and focused nature of potholes in the picture, there were challenges faced in clustering in our dataset because of real world problems,  like - sunlight, potholes filled with mud, making it hard to discern them from the roads. We concluded, therefore that dry and wet potholes cannot be preprocessed in a similar way, 
  
- \begin{figure}[ht!]
-\centering
-\begin{tabular}{ccc}
-\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue_cam.jpg}} &
-\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation_cam.jpg}} &
-\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance_cam.jpg}}
-\end{tabular}
-\caption{HSV channels for collected dataset}
-\end{figure}
+% \begin{figure}[ht!]
+%\centering
+%\begin{tabular}{ccc}
+%\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue_cam.jpg}} &
+%\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation_cam.jpg}} &
+%\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance_cam.jpg}}
+%\end{tabular}
+%\caption{HSV channels for collected dataset}
+%\end{figure}
      
  
  \begin{figure}[ht!]
@@ -143,13 +200,18 @@ In order to remove the external environment and extract the road from the given 
 \end{itemize}
 
 \section{Future Work}
-EXPAND on these  - 
-\begin{itemize}
-\item feature extraction
-\item Application of standard ML algorithms
-\item Comparative analysis of obtained results.
-\end{itemize}
+Future enhancements of this work is explained briefly in the following paragraph.
 
+
+\subsection{Supervised Learning}
+We will be generating manually labelled data from the images collected. Using the labelled image data we apply classical supervised learning techniques to find out the presence of potholes in the image. We will be extracting each frame separately from the video and segregate the frames that has potholes. SURF or SIFT detectors are used to extract features from the images which is used for learning. 
+
+\subsection{Classification}
+After the features are extracted we using various machine learning techniques to classify whether or not the given frame from a video contains potholes. We use methods like Naive Bayes, KNearest Neighbour, SVM and the like to train the model and predict the existence of the potholes.
+
+
+\subsection{Comparative analysis}
+A study is then done based on the result obtained from the classical machine learning methods to find out which method works best in a given scenario.
 
 \begin{thebibliography}{9}
 \bibitem{paperone} 
@@ -161,8 +223,8 @@ S Nienaber*, M Booysen* AND R Kroon**.
  
 \bibitem{papertwo} 
 Ajit Danti, Jyoti Y. Kulkarni, and P. S. Hiremath, Member, IACSIT
-\textit{An Image Processing Approach to Detect Lanes, Pot Holes and Recognize Road Signs in Indian Roads}.
-
+\textit{An Image Processing Approach to Detect Lanes, Pot Holes and Recognize Road Signs in Indian Roads, December 2012}
+\url{http://www.ijmo.org/papers/204-S3015.pdf}
 \end{thebibliography}
 
 \end{document}
