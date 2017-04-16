@@ -107,6 +107,39 @@ In order to remove the external environment and extract the road from the given 
 
     Mask applied on collected dataset: YOUTUBE LINK.
     
+ \item Classic methods for edge detection
+ 
+ We initially used some classic methods like k-means and meanshift for edge detection. While it worked good with the Google images, because of the zoomed and focused nature of potholes in the picture, there were challenges faced in clustering in our dataset because of real world problems,  like - sunlight, potholes filled with mud, making it hard to discern them from the roads. We concluded, therefore that dry and wet potholes cannot be preprocessed in a similar way, 
+ 
+ \begin{figure}[ht!]
+\centering
+\begin{tabular}{ccc}
+\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue_cam.jpg}} &
+\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation_cam.jpg}} &
+\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance_cam.jpg}}
+\end{tabular}
+\caption{HSV channels for collected dataset}
+\end{figure}
+     
+ 
+ \begin{figure}[ht!]
+\centering
+\begin{tabular}{ccc}
+\subfloat[Original Google image]{\includegraphics[width = 2in]{road_10.jpg}} &
+\subfloat[Clustered image]{\includegraphics[width = 2in]{Result_for_kmeans10.jpg}} 
+\end{tabular}
+\caption{K-means on classic Google images}
+\end{figure}
+
+ \begin{figure}[ht!]
+\centering
+\begin{tabular}{ccc}
+\subfloat[Original Camera image]{\includegraphics[width = 2in]{road_cam_33.jpg}} &
+\subfloat[Clustered image]{\includegraphics[width = 2in]{Result_for_camkmeans.jpg}} 
+\end{tabular}
+\caption{K-means on the dataset}
+\end{figure}
+    
 \end{itemize}
 
 \section{Future Work}
