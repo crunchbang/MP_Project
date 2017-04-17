@@ -1,4 +1,48 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage{multirow}
+
 \begin{document}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{IIIT-B_logo.jpg}\par\vspace{1cm}
+	{\scshape\LARGE International Institute of Information Technology Bangalore \par}
+	\vspace{1cm}
+	{\scshape\Large Project Progress Report\par}
+	{\Large DS/NC/ESD 863 Machine Perception\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Vehicle Driving Assistant \par}
+	\vspace{2cm}	   
+	{\Large\itshape Akanksha Dwivedi - MT2016006\par}
+	{\Large\itshape Anoop Toffy - MT2016016\par}
+	{\Large\itshape Athul Suresh - MT2016030\par}
+	{\Large\itshape Tarini Chandrashekhar - MT2016144\par}
+	\vfill
+	{\huge Group 7 \par}
+	\vfill
+	Guide : \par
+	Prof. Dinesh Babu Jayagopi 
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+\newpage
+
+
 \begin{enumerate}
   \item Morphological transformations are some simple operations based on the image shape. It is normally performed on binary images. It needs two inputs, one is the original image, second one is called structuring element or kernel which decides the nature of operation. Two basic morphological operators are Erosion and Dilation. Then its variant forms like Opening, Closing, Gradient etc also comes into play.
     \begin{center}

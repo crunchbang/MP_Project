@@ -1,0 +1,42 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Original Image from the Google Images Dataset\relax }}{4}{figure.caption.3}
+\contentsline {figure}{\numberline {2}{\ignorespaces Output of the three Blob Detection Techniques\relax }}{5}{figure.caption.4}
+\contentsline {figure}{\numberline {3}{\ignorespaces Original Image from the Collected Dataset\relax }}{5}{figure.caption.5}
+\contentsline {figure}{\numberline {4}{\ignorespaces Output of the three Blob Detection Techniques\relax }}{5}{figure.caption.6}
+\contentsline {figure}{\numberline {5}{\ignorespaces Original Image from the Google Images Dataset\relax }}{6}{figure.caption.7}
+\contentsline {figure}{\numberline {6}{\ignorespaces Output of Contour Detection using K-Means\relax }}{7}{figure.caption.8}
+\contentsline {figure}{\numberline {7}{\ignorespaces Original Image from the Collected Dataset\relax }}{7}{figure.caption.9}
+\contentsline {figure}{\numberline {8}{\ignorespaces Output of Contour Detection using K-Means\relax }}{8}{figure.caption.10}
+\contentsline {figure}{\numberline {9}{\ignorespaces Original Image from the Collected Dataset\relax }}{8}{figure.caption.11}
+\contentsline {figure}{\numberline {10}{\ignorespaces Output of Contour Detection using K-Means\relax }}{9}{figure.caption.12}
+\contentsline {figure}{\numberline {11}{\ignorespaces Original Image from the Google Images Dataset\relax }}{10}{figure.caption.13}
+\contentsline {figure}{\numberline {12}{\ignorespaces Output of Contour Detection using Meanshift\relax }}{10}{figure.caption.14}
+\contentsline {figure}{\numberline {13}{\ignorespaces Original Image from the Collected Dataset\relax }}{11}{figure.caption.15}
+\contentsline {figure}{\numberline {14}{\ignorespaces Output of Contour Detection using Meanshift\relax }}{11}{figure.caption.16}
+\contentsline {figure}{\numberline {15}{\ignorespaces Original Image from the Collected Dataset\relax }}{12}{figure.caption.17}
+\contentsline {figure}{\numberline {16}{\ignorespaces Output of Contour Detection using Meanshift\relax }}{12}{figure.caption.18}
+\contentsline {figure}{\numberline {17}{\ignorespaces Original Image from the Collected Dataset\relax }}{13}{figure.caption.19}
+\contentsline {figure}{\numberline {18}{\ignorespaces Output of Contour Detection using Meanshift\relax }}{13}{figure.caption.20}
+\contentsline {figure}{\numberline {19}{\ignorespaces Original Image from the Google Images Dataset\relax }}{14}{figure.caption.21}
+\contentsline {figure}{\numberline {20}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{14}{figure.caption.22}
+\contentsline {figure}{\numberline {21}{\ignorespaces Original Image from the Google Images Dataset\relax }}{15}{figure.caption.23}
+\contentsline {figure}{\numberline {22}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{15}{figure.caption.24}
+\contentsline {figure}{\numberline {23}{\ignorespaces Original Image from the Collected Dataset\relax }}{16}{figure.caption.25}
+\contentsline {figure}{\numberline {24}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{16}{figure.caption.26}
+\contentsline {figure}{\numberline {25}{\ignorespaces Original Image from the Collected Dataset\relax }}{17}{figure.caption.27}
+\contentsline {figure}{\numberline {26}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{17}{figure.caption.28}
+\contentsline {figure}{\numberline {27}{\ignorespaces Original Image from the Collected Dataset\relax }}{18}{figure.caption.29}
+\contentsline {figure}{\numberline {28}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{18}{figure.caption.30}
+\contentsline {figure}{\numberline {29}{\ignorespaces Original Image from the Collected Dataset\relax }}{19}{figure.caption.31}
+\contentsline {figure}{\numberline {30}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{19}{figure.caption.32}
+\contentsline {figure}{\numberline {31}{\ignorespaces Original Image from the Collected Dataset\relax }}{20}{figure.caption.33}
+\contentsline {figure}{\numberline {32}{\ignorespaces Output of Contour Detection using Morphological Transformation\relax }}{20}{figure.caption.34}
+\contentsline {figure}{\numberline {33}{\ignorespaces HSV channels for classic image\relax }}{21}{figure.caption.35}
+\contentsline {figure}{\numberline {34}{\ignorespaces Thresholding to create a mask\relax }}{21}{figure.caption.36}
+\contentsline {figure}{\numberline {35}{\ignorespaces Opening and Closing to clean up the mask\relax }}{22}{figure.caption.37}
+\contentsline {figure}{\numberline {36}{\ignorespaces Application of mask\relax }}{23}{figure.caption.38}
+\contentsline {figure}{\numberline {37}{\ignorespaces K-means on classic Google images\relax }}{24}{figure.caption.39}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original Google image}}}{24}{subfigure.37.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Clustered image}}}{24}{subfigure.37.2}
+\contentsline {figure}{\numberline {38}{\ignorespaces K-means on the dataset\relax }}{24}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original Camera image}}}{24}{subfigure.38.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Clustered image}}}{24}{subfigure.38.2}

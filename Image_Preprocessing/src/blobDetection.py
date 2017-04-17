@@ -2,11 +2,12 @@ from math import sqrt
 from skimage import data
 from skimage.feature import blob_dog, blob_log, blob_doh
 from skimage.color import rgb2gray
+import os
 
 import matplotlib.pyplot as plt
 import cv2
 
-image = cv2.imread('/home/akanksha/Desktop/MP/Class Project/Dataset/road_11.jpg', 0)
+image = cv2.imread(os.path.join('downloaded','road_11.jpg'), 0)
 image = cv2.resize(image, (480, 360))
 image_gray = rgb2gray(image)
 

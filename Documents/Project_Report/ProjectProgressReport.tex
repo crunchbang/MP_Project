@@ -38,7 +38,7 @@
 
 
 \tableofcontents
-%\listoffigures
+\listoffigures
 %\listoftables
 \newpage
 
@@ -51,17 +51,280 @@ Autonomous vehicles has been a common term in our day to day life with car manuf
 Moreover, the sheer variety in the color, shape and size of potholes makes this problem an apt candidate to be solved using modern machine learning techniques. 
 
 \section{Related Works}
-In Nienaber et al(2015) \cite{paperone}, a system using basic image processing techniques in a constrained environment without relying on any machine learning techniques is used for pothole detection. It presents a good preliminary method for detecting potholes using a single camera within an range of 2 - 20m from a vehicle moving at a speed of not more than 60km/hr. The method separates a rectangular area of interest just above the hood of the vehicle which contains road surface, assuming that driver maintains a safe distance from the front vehicle. The rectangular area of interest is separated by connecting the various farthest region interest using convex hull algorithm.
+In Nienaber et al (2015) \cite{paperone}, a system using basic image processing techniques in a constrained environment without relying on any machine learning techniques is used for pothole detection. It presents a good preliminary method for detecting potholes using a single camera within an range of 2 - 20m from a vehicle moving at a speed of not more than 60km/hr. The method separates a rectangular area of interest just above the hood of the vehicle which contains road surface, assuming that driver maintains a safe distance from the front vehicle. The rectangular area of interest is separated by connecting the various farthest region of interest using convex hull algorithm.
 
-The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015) Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it make automated driving safe and easier in Indian roads. 
+\vspace*{.5cm}
+
+The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015), Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it makes automated driving safer and easier in Indian roads. 
 
 
 \section{Progress}
-We started out with the naive approach - try to detect the potholes directly from pictures using image processing techniques. We got a collected a small dataset from Google images and applied classic techniques like edge and contour detection. The problem with Google images of potholes is that they're heavily biased - the potholes are shown in such a way that it is the center of attraction in the picture, with good lighting and clear demarcation from the environment. While our technique worked for a limited subset, the results were far from satisfactory. We got too much noise and too little usable data to go on. Detecting potholes, which may be large or small, circular or quadrilateral, filled with liquid or dust and overall varied in nature, was not a straightforward problem.
+We started out with the naive approach - try to detect the potholes directly from pictures using image processing techniques. We collected a small dataset from Google images and applied classic techniques like edge and contour detection. The problem with Google images of potholes is that they're heavily biased - the potholes are shown in such a way that it is the center of focus in the picture, with good lighting and clear demarcation from the environment. Hence our initial set of technique worked for a limited subset, the results were far from satisfactory. We got too much noise and too little usable data to go on. Detecting potholes, which may be large or small, circular or quadrilateral, filled with liquid or dust and overall varied in nature, was not a straightforward problem.
+
+\vspace*{.5cm}
+
+The following list of figures demonstrates the approaches we did initially to detect potholes using image processing techniques:
+
+\begin{itemize}
+\item Blob Detection Using LoG, DoG, DoH \\
+
+In the Blob Detection Technique, the Laplacian Of Gaussian(LOG), Difference Of Gaussian(DOG) and the Determinant of Hessian(DOH) was found out with arguments \textbf{max\_sigma} as 30, \textbf{num\_sigma} as 10 and \textbf{threshold} as .1 in the input frames. It was observed that the LOG and DOG was detecting the potholes, additional to the noise in the frames and the DOH methodology detected only a fraction of the potholes.
+
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_11.jpg}
+        \caption{Original Image from the Google Images Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 6in]{images/blob_3.png}
+        \caption{Output of the three Blob Detection Techniques}
+    \end{figure}
+    
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_8.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 6in]{images/blob_1.png}
+        \caption{Output of the three Blob Detection Techniques}
+    \end{figure}
+    
+    \pagebreak
+%    \begin{figure}[ht!]
+%        \centering
+%        \includegraphics[width = 3in]{images/road_cam_3.jpg}
+%        \caption{Original Image from the Collected Dataset}
+%    \end{figure}
+%
+%    \begin{figure}[ht!]
+%        \centering
+%        \includegraphics[width = 5in]{images/blob_2.png}
+%        \caption{Output of the three Blob Detection Techniques}
+%    \end{figure}
+%    \pagebreak
+    
+\item Contour Detection with K-Means \\
+
+In the contour detection method with K-Means, we used the K-Means algorithm with 30 iterations and 3 clusters. The Gaussian Blur was applied to the output of the K-Means to remove any noise in the frames. Finally, the Canny Edge Detection algorithm was used to find out the edges and contours around potholes in the frames. This technique detected potholes and some of the noise in the Google Images dataset but it did not work with our dataset. It missed the contours for potholes and detected shadows in some of the frames.
+
+
+\begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_7.jpg}
+        \caption{Original Image from the Google Images Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/kmeans_1.png}
+        \caption{Output of Contour Detection using K-Means}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_14.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/kmeans_2.png}
+        \caption{Output of Contour Detection using K-Means}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_11.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/kmeans_3.png}
+        \caption{Output of Contour Detection using K-Means}
+    \end{figure}
+    \pagebreak
+
+\item Contour Detection with Meanshift \\
+
+Using the idea of the previous methodology of Contour Detection, we used Meanshift as the clustering algorithm instead of the K-means algorithm. The inbuilt function \textbf{pyrMeanShiftFiltering} was used to filter and segment the image with arguments \textbf{Spatial Window Radius} as 25, \textbf{Color Window Radius} as 45 and \textbf{Maximum Level Of Segmentation} as 10. Similar to the previous methodology, Gaussian Blur and Canny Edge Detection were applied to find the contours in the frames.This method worked perfectly on the Google Images Dataset but detected the potholes partially in our dataset with the additional noise.
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 2in]{images/road_10.jpg}
+        \caption{Original Image from the Google Images Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/meanshift_2.png}
+        \caption{Output of Contour Detection using Meanshift}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_25.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/meanshift_1.png}
+        \caption{Output of Contour Detection using Meanshift}
+    \end{figure}
+    \pagebreak
+
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_14.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/meanshift_3.png}
+        \caption{Output of Contour Detection using Meanshift}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/DSC_2524.JPG}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/meanshift_4.png}
+        \caption{Output of Contour Detection using Meanshift}
+    \end{figure}
+    \pagebreak
+
+\newpage
+    
+\item Contour Detection with Morphological Transformation \\
+
+In the Contour Detection method with Morphological Transformations, we used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding was applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.    
+
+\begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_11.jpg}
+        \caption{Original Image from the Google Images Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_2.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_7.jpg}
+        \caption{Original Image from the Google Images Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_6.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_8.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_3.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_2.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_4.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_6.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_5.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_4.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_1.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 3in]{images/road_cam_31.jpg}
+        \caption{Original Image from the Collected Dataset}
+    \end{figure}
+
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width = 5in]{images/morph_transform_7.png}
+        \caption{Output of Contour Detection using Morphological Transformation}
+    \end{figure}
+    \pagebreak
+    
+\end{itemize}
+
+\vspace*{.5cm}
+
+
+
+\newpage
+
 
 In order to get dataset that is rooted in the real world, we went out and recorded 360p video of the roads in and around Electronic City phase 2. We managed to get about 20 minutes of footage of varying terrains with diverse features that are commonly encountered on Indian roads. The footage was preprocessed to reduce jitter induced in the video due to it being recorded by the pillion rider of a moving motorcycle. 
 
+\vspace*{.25cm}
+
 Collected data: \url{ https://youtu.be/hmeBmdZzlLU }
+
+\vspace*{.25cm}
 
 We expected the detection of potholes to be simplified if a localized area in the image can be found where the chance of occurrence of the pothole is relatively high. In essence, we decided to extract the road from the surrounding environment.
 
@@ -80,7 +343,7 @@ In order to remove the external environment and extract the road from the given 
 %\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
 %\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
 %\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
-\includegraphics[width = 6in]{images/rgb_hsv.png}
+\includegraphics[width = 6in]{images/rgb_hsv_highdpi.png}
 \end{tabular}
 \caption{HSV channels for classic image}
 
@@ -113,7 +376,7 @@ In order to remove the external environment and extract the road from the given 
 %\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
 %\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
 %\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
-\includegraphics[width = 3in]{images/otzu.png}
+\includegraphics[width = 5.5in]{images/otzu_highdpi.png}
 \end{tabular}
 \caption{Thresholding to create a mask}
 
@@ -123,9 +386,13 @@ In order to remove the external environment and extract the road from the given 
 \newpage
     
 \item Clean up the mask \\
-    (EXPLAIN MORPHOLOGICAL TRANSFORMATION)There were still stray islands in the mask, i.e small localized black(white) regions within the white(black) areas. In order to even these out, we used the following two morphological transformation methods in succession -
-    ** Closing : It is dialation followed by erosion. It is useful in closing small holes inside the foreground objects, or small black points on the object.
-    ** Opening : It is erosion followed by dialation. It is useful in removing noise from the black areas.
+    Morphological transformations are some simple operations based on the image shape. It is normally performed on binary images. It needs two inputs, one is the original image, second one is called structuring element or kernel which decides the nature of operation. Two basic morphological operators are Erosion and Dilation. 
+    ** Erosion: The basic idea of erosion is to erode away the boundaries of foreground object.  It is useful for removing small white noises, detach two connected objects etc.
+    ** Dilation: It is just opposite of erosion. It increases the white region in the image or size of foreground object increases. Normally, in cases like noise removal, erosion is followed by dilation. Because, erosion removes white noises, but it also shrinks our object. So, we dilate it. Since noise is gone, they won't come back, but our object area increases. It is also useful in joining broken parts of an object. 
+    
+    There were still stray islands in the mask, i.e small localized black(white) regions within the white(black) areas. In order to even these out, we used the following two morphological transformation methods in succession -
+    ** Closing : It is dilation followed by erosion. It is useful in closing small holes inside the foreground objects, or small black points on the object.
+    ** Opening : It is erosion followed by dilation. It is useful in removing noise from the black areas.
     We used a relatively large kernel for both the operations to get a fairly clean mask.
  
 
@@ -137,13 +404,14 @@ In order to remove the external environment and extract the road from the given 
 %\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
 %\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
 %\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
-\includegraphics[width = 3in]{images/closing_opening.png}
+\includegraphics[width = 5in]{images/closing_opening.png}
 \end{tabular}
 \caption{Opening and Closing to clean up the mask}
 
 \end{center}
 \end{figure} 
-    
+\newpage
+
 \item Application of mask \\
     The obtained mask was applied on the original image and the road was extracted out. 
 
@@ -155,14 +423,14 @@ In order to remove the external environment and extract the road from the given 
 %\subfloat[Hue channel]{\includegraphics[width = 2in]{Hue.jpg}} &
 %\subfloat[Saturation channel]{\includegraphics[width = 2in]{Saturation.jpg}} &
 %\subfloat[Variance channel]{\includegraphics[width = 2in]{Variance.jpg}} 
-\includegraphics[width = 3in]{images/out.png}
+\includegraphics[width = 5in]{images/output.png}
 \end{tabular}
 \caption{Application of mask}
 
 \end{center}
 \end{figure} 
 
-    Mask applied on collected dataset: YOUTUBE LINK.
+    Mask applied on collected dataset: \url{https://youtu.be/937GaZlRy2Y}.
 
     
 \item Classic methods for edge detection
