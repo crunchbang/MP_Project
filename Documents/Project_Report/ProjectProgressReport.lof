@@ -1,5 +1,5 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Output of the three Blob Detection Techniques\relax }}{3}{figure.caption.3}
-\contentsline {figure}{\numberline {2}{\ignorespaces Output of the three Blob Detection Techniques\relax }}{4}{figure.caption.4}
+\contentsline {figure}{\numberline {1}{\ignorespaces Output of the three Blob Detection Techniques on Google Images\relax }}{3}{figure.caption.3}
+\contentsline {figure}{\numberline {2}{\ignorespaces Output of the three Blob Detection Techniques on Dataset\relax }}{4}{figure.caption.4}
 \contentsline {figure}{\numberline {3}{\ignorespaces Output of Contour Detection using K-Means\relax }}{4}{figure.caption.5}
 \contentsline {figure}{\numberline {4}{\ignorespaces Output of Contour Detection using K-Means\relax }}{5}{figure.caption.6}
 \contentsline {figure}{\numberline {5}{\ignorespaces Output of Contour Detection using Meanshift\relax }}{6}{figure.caption.7}
@@ -13,7 +13,7 @@
 \contentsline {figure}{\numberline {13}{\ignorespaces Output of Nienabar's Algorithm\relax }}{11}{figure.caption.15}
 \contentsline {figure}{\numberline {14}{\ignorespaces Output of Nienabar's Algorithm\relax }}{12}{figure.caption.16}
 \contentsline {figure}{\numberline {15}{\ignorespaces Output of Nienabar's Algorithm\relax }}{12}{figure.caption.17}
-\contentsline {figure}{\numberline {16}{\ignorespaces HSV channels for classic image\relax }}{13}{figure.caption.18}
-\contentsline {figure}{\numberline {17}{\ignorespaces Thresholding to create a mask\relax }}{14}{figure.caption.19}
-\contentsline {figure}{\numberline {18}{\ignorespaces Opening and Closing to clean up the mask\relax }}{15}{figure.caption.20}
+\contentsline {figure}{\numberline {16}{\ignorespaces HSV channels for classic image\relax }}{14}{figure.caption.18}
+\contentsline {figure}{\numberline {17}{\ignorespaces Thresholding to create a mask\relax }}{15}{figure.caption.19}
+\contentsline {figure}{\numberline {18}{\ignorespaces Opening and Closing to clean up the mask\relax }}{16}{figure.caption.20}
 \contentsline {figure}{\numberline {19}{\ignorespaces Application of mask\relax }}{16}{figure.caption.21}

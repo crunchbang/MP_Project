@@ -68,7 +68,7 @@ The following list of figures demonstrates the approaches we did initially to de
 \begin{itemize}
 \item Blob Detection Using LoG, DoG, DoH \\
 
-In the Blob Detection Technique, the Laplacian Of Gaussian(LOG), Difference Of Gaussian(DOG) and the Determinant of Hessian(DOH) was found out with arguments \textbf{max\_sigma} as 30, \textbf{num\_sigma} as 10 and \textbf{threshold} as .1 in the input frames. It was observed that the LOG and DOG was detecting the potholes, additional to the noise in the frames and the DOH methodology detected only a fraction of the potholes.
+In the Blob Detection Technique, the Laplacian of Gaussian(LoG), Difference of Gaussian(DoG) and the Determinant of Hessian(DoH) was found out with arguments max\_sigma as 30, num\_sigma as 10 and threshold as .1 in the input frames. It was observed that the LoG and DoG was detecting the potholes, additional to the noise in the frames and the DoH methodology detected only a fraction of the potholes.
 
     
 %    \begin{figure}[ht!]
@@ -78,9 +78,12 @@ In the Blob Detection Technique, the Laplacian Of Gaussian(LOG), Difference Of G
 %    \end{figure}
 
     \begin{figure}[ht!]
-        \centering
+        \begin{center}
+        
+
         \includegraphics[width = 6in]{images/blob_3.png}
-        \caption{Output of the three Blob Detection Techniques}
+        \caption{Output of the three Blob Detection Techniques on Google Images}
+                \end{center}
     \end{figure}
     
 %    \newpage
@@ -94,7 +97,7 @@ In the Blob Detection Technique, the Laplacian Of Gaussian(LOG), Difference Of G
     \begin{figure}[ht!]
         \centering
         \includegraphics[width = 6in]{images/blob_1.png}
-        \caption{Output of the three Blob Detection Techniques}
+        \caption{Output of the three Blob Detection Techniques on Dataset}
     \end{figure}
     
     \newpage
@@ -159,7 +162,7 @@ In the contour detection method with K-Means, we used the K-Means algorithm with
 
 \item Contour Detection with Meanshift \\
 
-Using the idea of the previous methodology of Contour Detection, we used Meanshift as the clustering algorithm instead of the K-means algorithm. The inbuilt function \textbf{pyrMeanShiftFiltering} was used to filter and segment the image with arguments \textbf{Spatial Window Radius} as 25, \textbf{Color Window Radius} as 45 and \textbf{Maximum Level Of Segmentation} as 10. Similar to the previous methodology, Gaussian Blur and Canny Edge Detection were applied to find the contours in the frames.This method worked perfectly on the Google Images Dataset but detected the potholes partially in our dataset with the additional noise.
+Using the idea of the previous methodology of Contour Detection, we used Meanshift as the clustering algorithm instead of the K-means algorithm. The inbuilt function pyrMeanShiftFiltering was used to filter and segment the image with arguments Spatial Window Radius as 25, Color Window Radius as 45 and Maximum Level Of Segmentation as 10. Similar to the previous methodology, Gaussian Blur and Canny Edge Detection were applied to find the contours in the frames.This method worked perfectly on the Google Images Dataset but detected the potholes partially in our dataset with the additional noise.
 
 %    \begin{figure}[ht!]
 %        \centering
@@ -328,7 +331,7 @@ In the Contour Detection method with Morphological Transformations, we used eros
 
 \item Classic Watershed Algorithm \\
 
-In this methodology, we used the classic Watershed Algorithm for the segmentation. The Watershed Algorithm works as follows: The input image, being converted into the grayscale, is thresholded with Binary Inverse and Otsu's thresholding.The morphology transformations, opening and dilating, are applied to extract the background area from the image. To find the foreground area in the image, Distance Transform is being applied with L2 Transform as argument. Both the background and the foreground regions are marked and this output is fed to the \textbf{watershed} function to get the output of segmentation. This algorithm worked absolutely fine on the Google Images Dataset.
+In this methodology, we used the classic Watershed Algorithm for the segmentation. The Watershed Algorithm works as follows: The input image, being converted into the grayscale, is thresholded with Binary Inverse and Otsu's thresholding.The morphology transformations, opening and dilating, are applied to extract the background area from the image. To find the foreground area in the image, Distance Transform is being applied with L2 Transform as argument. Both the background and the foreground regions are marked and this output is fed to the watershed function to get the output of segmentation. This algorithm worked absolutely fine on the Google Images Dataset.
     
 %\begin{figure}[ht!]
 %        \centering
@@ -428,7 +431,7 @@ In this methodology, we used the classic Watershed Algorithm for the segmentatio
     
 \item Potholes Detection using Nienabar's Paper \\
 
-This technique referred one of the papers we followed, by the author Nienabar, Boysoon and Kroon. The input frame was to be converted to one of the color channels for the next steps. The results of Grayscale, Hue, saturation and variance channels were compared. Among these, the results came out best with the saturation channel. Gaussian Filter and Canny Edge Detection were applied to detect the edges. Finally, dilation was performed on the output frames, in 4 iterations, to bring out the edges/contours around potholes.
+This technique referred one of the papers we followed, by the author Nienabar et al \cite{paperone}. The input frame was to be converted to one of the color channels for the next steps. The results of Grayscale, Hue, saturation and variance channels were compared. Among these, the results came out best with the saturation channel. Gaussian Filter and Canny Edge Detection were applied to detect the edges. Finally, dilation was performed on the output frames, in 4 iterations, to bring out the edges/contours around potholes.
 
 % \begin{figure}[ht!]
 %        \centering
@@ -541,7 +544,8 @@ In order to remove the external environment and extract the road from the given 
 
 \begin{itemize}
 
-\item Choose a channel \\
+\item Choose a channel \\ 
+
     We had to come up with an input representation where the difference between the road and the surrounding was accentuated. We tried Grayscale images but the contrast wasn't enough to facilitate extraction. Much better results were found by converting the frame to HSV colorspace. We tried each channel in isolation and got satisfactory results with the S and V channels. 
 
  \begin{figure}[!ht]
@@ -572,9 +576,11 @@ In order to remove the external environment and extract the road from the given 
 
 \newpage
 \item Remove Noise \\
+
     Now that we had a channel to work on, wee had to reduce the amount of noise in the frame. Between Gaussian Blur and Median Blur, we got better results with Median Blur with a relatively large kernel size to reduce the noise inherent in the picture. 
 
 \item Threshold to get a suitable mask \\
+
     Now that we had a denoised version of the channel with maximum variance between the road and surrounding, we applied Otzu's thresholding to extract the part of the image containing the road. We got a relatively good output but there was still noise in the threshold mask.
 
 \begin{figure}[!ht]
@@ -592,8 +598,10 @@ In order to remove the external environment and extract the road from the given 
 \end{center}
 \end{figure}
     
+\newpage
     
 \item Clean up the mask \\
+
     Morphological transformations are some simple operations based on the image shape. It is normally performed on binary images. It needs two inputs, one is the original image, second one is called structuring element or kernel which decides the nature of operation. Two basic morphological operators are Erosion and Dilation. 
     ** Erosion: The basic idea of erosion is to erode away the boundaries of foreground object.  It is useful for removing small white noises, detach two connected objects etc.
     ** Dilation: It is just opposite of erosion. It increases the white region in the image or size of foreground object increases. Normally, in cases like noise removal, erosion is followed by dilation. Because, erosion removes white noises, but it also shrinks our object. So, we dilate it. Since noise is gone, they won't come back, but our object area increases. It is also useful in joining broken parts of an object. 
@@ -619,8 +627,10 @@ In order to remove the external environment and extract the road from the given 
 \end{center}
 \end{figure} 
 
+\newpage
 
 \item Application of mask \\
+
     The obtained mask was applied on the original image and the road was extracted out. 
 
 \begin{figure}[!ht]
@@ -677,7 +687,8 @@ In order to remove the external environment and extract the road from the given 
 \end{itemize}
 
 \section{Future Work}
-Future enhancements of this work is explained briefly in the following paragraph.
+
+To analyse the frames more precisely we will be collecting additional dataset with improved frame rate and resolution.One which we will carry out a set of image preprocessing techniques to clear the jitter and apply a set of methods to detect potholes precisely. Future enhancements of this work is explained briefly in the following paragraph.
 
 
 \subsection{Supervised Learning}
