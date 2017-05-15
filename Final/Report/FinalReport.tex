@@ -402,10 +402,10 @@
 % was not built to handle multiple paragraphs
 %
 
-\author{Akanksha~Dwivedi,~\IEEEmembership{MT2016006,}
-        Anoop~Toffy,~\IEEEmembership{MT2016016,,}
-        Athul~Suresh,~\IEEEmembership{MT2016030,}
-        and~Tarini~Chandrashekhar,~\IEEEmembership{MT2016144}}% <-this % stops a space
+\author{Akanksha~Dwivedi,~\IEEEmembership{}
+        Anoop~Toffy,~\IEEEmembership{}
+        Athul~Suresh,~\IEEEmembership{}
+        and~Tarini~Chandrashekhar,~\IEEEmembership{International Institute of Information Technology, Bangalore}}% <-this % stops a space
 %\thanks{M. Shell was with the Department
 %of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
 %GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this % stops a space
@@ -523,13 +523,20 @@ in the road ahead.
 % (should never be an issue)
 
 \section{Related Work}
+In Nienaber et al (2015) \cite{paperone}, a system using basic image processing techniques in a constrained environment without relying on any machine learning techniques is used for pothole detection. It presents a good preliminary method for detecting potholes using a single camera within an range of 2 - 20m from a vehicle moving at a speed of not more than 60km/hr. The method separates a rectangular area of interest just above the hood of the vehicle which contains road surface, assuming that driver maintains a safe distance from the front vehicle. The rectangular area of interest is separated by connecting the various farthest region of interest using convex hull algorithm.
+
+\vspace*{.5cm}
+
+The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015), Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it makes automated driving safer and easier in Indian roads. 
 
 \section{Proposed Work}
 
 \section{Methodology}
 
 
+\subsection{Road Extraction Method}
 
+\subsection{Blob Detection Method}
 
 
 % An example of a floating figure using the graphicx package.
@@ -626,7 +633,7 @@ in the road ahead.
 % footnotes above bottom floats. This can be corrected via the
 % \fnbelowfloat command of the stfloats package.
 
-
+\section{Results}
 
 
 \section{Conclusion}
@@ -730,21 +737,21 @@ Biography text here.
 \end{IEEEbiography}
 
 % if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{Anoop Toffy}
-Biography text here.
-\end{IEEEbiographynophoto}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{anoop.jpg}}]{Anoop Toffy}
+Anoop Toffy is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+\end{IEEEbiography}
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
 
-\begin{IEEEbiographynophoto}{Athul Suresh}
+\begin{IEEEbiography}{Athul Suresh}
 Biography text here.
-\end{IEEEbiographynophoto}
+\end{IEEEbiography}
 
-\begin{IEEEbiographynophoto}{Tarini Chandrashekhar}
+\begin{IEEEbiography}{Tarini Chandrashekhar}
 Biography text here.
-\end{IEEEbiographynophoto}
+\end{IEEEbiography}
 
 
 % You can push biographies down or up by placing
