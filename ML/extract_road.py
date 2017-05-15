@@ -6,10 +6,25 @@ import os
 
 def booya(img):
     # resized = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_LINEAR)
-    resized   = img
+    resized = img
+    width, length, c = resized.shape
     hsv = cv2.cvtColor(resized, cv2.COLOR_BGR2HSV)
-    # width, length, c = hsv.shape
-    roi = resized[1600:1700, 2000:2100]
+
+    test = np.array(resized, copy=True)
+    roi_top_left_x = int(length / 2 + length / 12)
+    roi_top_left_y = int(width - width / 8)
+    roi_top_left = (roi_top_left_x, roi_top_left_y)
+
+    roi_bottom_right_x = int(length / 2 + 2 * length / 12)
+    roi_bottom_right_y = width - 50
+    roi_bottom_right = (roi_bottom_right_x, roi_bottom_right_y)
+
+    cv2.rectangle(test, roi_top_left, roi_bottom_right, (0, 255, 0), 15)
+    # print(roi_top_left - roi_bottom_right)
+
+    # roi = resized[1600:1700, 2000:2100]
+    roi = resized[roi_top_left_y:roi_bottom_right_y, roi_top_left_x:roi_bottom_right_x]
+    print(roi.shape)
     roi_hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
     h, s, v = cv2.split(roi_hsv)
     mean_h = np.mean(h)
@@ -19,8 +34,8 @@ def booya(img):
     std_s = np.std(s)
     std_v = np.std(v)
 
-    lower_threshold = np.array([mean_h - 3*std_h, mean_s - 3*std_s, mean_v - 3*std_v])
-    upper_threshold = np.array([mean_h + 3*std_h, mean_s + 3*std_s, mean_v + 3*std_v])
+    lower_threshold = np.array([mean_h - 3 * std_h, mean_s - 3 * std_s, mean_v - 3 * std_v])
+    upper_threshold = np.array([mean_h + 3 * std_h, mean_s + 3 * std_s, mean_v + 3 * std_v])
     mask = cv2.inRange(hsv, lower_threshold, upper_threshold)
     mask_cpy = np.array(mask, copy=True)
     # closing = cv2.morphologyEx(mask, cv2.MORPH_OPEN, (15, 15))
@@ -34,7 +49,7 @@ def booya(img):
     #     hull = cv2.convexHull(contour[0])
     #     points.extend(hull)
     # hull = cv2.convexHull(np.array(points))
-    cnt = max(contour, key = cv2.contourArea)
+    cnt = max(contour, key=cv2.contourArea)
     hull = cv2.convexHull(cnt)
 
     new_mask = np.zeros_like(mask)
@@ -42,11 +57,11 @@ def booya(img):
     result = cv2.bitwise_and(resized, resized, mask=new_mask)
     fig = plt.figure()
 
-    images = [resized, mask, result]
+    images = [test, roi, resized, mask, result]
     # titles = [""]
 
     for i in range(len(images)):
-        ax = fig.add_subplot(2, 2, i + 1)
+        ax = fig.add_subplot(3, 2, i + 1)
         # ax.set_title(titles[i])
         ax.imshow(images[i], cmap="gray")
         plt.axis("off")
