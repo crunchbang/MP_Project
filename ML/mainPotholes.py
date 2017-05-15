@@ -9,10 +9,11 @@ from sklearn import svm
 from sklearn import linear_model
 
 #########################################################################################################
+### Loading the saved file with features
 npzfile = np.load('potholes_features.npz')
 features = npzfile['arr_0']
 labels = npzfile['arr_1']
-print(features.shape)
+#print(features.shape)
 
 ### PCA to reduce the dimensions of data
 #pca = PCA(n_components=5000)
@@ -35,35 +36,34 @@ print(features.shape)
 
 ### SVM Classifier
 ### One against one approach
-# clf = svm.SVC(decision_function_shape='ovo')
-# clf.fit(trainFeat, trainLabels)
-# acc = model.score(testFeat, testLabels)
-# print("[INFO] SVM's accuracy with one against one approach: {:.2f}%".format(acc * 100))
+clf = svm.SVC(decision_function_shape='ovo')
+clf.fit(trainFeat, trainLabels)
+acc = clf.score(testFeat, testLabels)
+print("[INFO] SVM's accuracy with one against one approach: {:.2f}%".format(acc * 100))
 
-# ### One against rest approach
-# clf = svm.SVC(decision_function_shape='ovr')
-# clf.fit(trainFeat, trainLabels)
-# acc = model.score(testFeat, testLabels)
-# print("[INFO] SVM's accuracy with one against rest approach: {:.2f}%".format(acc * 100))
+### One against rest approach
+clf = svm.SVC(decision_function_shape='ovr')
+clf.fit(trainFeat, trainLabels)
+acc = clf.score(testFeat, testLabels)
+print("[INFO] SVM's accuracy with one against rest approach: {:.2f}%".format(acc * 100))
 
-# ### Logistic Regression Classifier
-# lr = linear_model.LogisticRegression(C=1e5)
-# lr.fit(trainFeat, trainLabels)
-# acc = lr.score(testFeat, testLabels)
-# print("[INFO] Multinomail Logistic Regression's Accuracy: {:.2f}%".format(acc * 100))
+### Logistic Regression Classifier
+lr = linear_model.LogisticRegression(C=1e5)
+lr.fit(trainFeat, trainLabels)
+acc = lr.score(testFeat, testLabels)
+print("[INFO] Multinomial Logistic Regression's Accuracy: {:.2f}%".format(acc * 100))
 
 
-# ### KNN Classifier
-# # train and evaluate a k-NN classifer on the histogram
-# # representations
-# print("[INFO] evaluating Average Flow Histogram's accuracy...")
-# model = KNeighborsClassifier(n_neighbors=1000,n_jobs=10)
-# model.fit(trainFeat, trainLabels)
-# acc = model.score(testFeat, testLabels)
-# print("[INFO] KNN's accuracy: {:.2f}%".format(acc * 100))
+### KNN Classifier
+# train and evaluate a k-NN classifer on the histogram
+# representations
+model = KNeighborsClassifier(n_neighbors=1000,n_jobs=10)
+model.fit(trainFeat, trainLabels)
+acc = model.score(testFeat, testLabels)
+print("[INFO] KNN's accuracy: {:.2f}%".format(acc * 100))
 
 ### Incremental Classifiers
 clf = linear_model.SGDClassifier()
 clf.fit(trainFeat, trainLabels)
-acc = model.score(testFeat, testLabels)
+acc = clf.score(testFeat, testLabels)
 print("[INFO] SGD Classifier's accuracy with one against rest approach: {:.2f}%".format(acc * 100))

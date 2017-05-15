@@ -31,7 +31,6 @@ def extract_ROI(img, size):
 	keep_region_color = 255
 	cv2.fillPoly(mask, region, ignore_mask_color)                  
 	region_selected_image = cv2.bitwise_and(grayscale_img, mask)   
-	### cv2.imshow('result.jpg',region_selected_image)
 	return region_selected_image
 
 
@@ -58,9 +57,22 @@ def extract_features(img):
 	feature = img.copy()
 	im2, contours, hierarchy = cv2.findContours(dilation, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 	cv2.drawContours(feature, contours, -1, (255,0,255), 3)
-	#cv2.imwrite('temp.jpg', temp)
-	return feature.flatten()
 
+	hist_features = extract_color_histogram(feature)
+	return hist_features
+
+def extract_color_histogram(image):
+	# extract a 3D color histogram from the HSV color space using
+	# the supplied number of `bins` per channel
+	bins=(8, 8, 8)
+
+	hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+	hist = cv2.calcHist([hsv], [0, 1, 2], None, bins, [0, 180, 0, 256, 0, 256])
+
+	### Normalizing the Histogram
+	cv2.normalize(hist, hist)
+	# return the flattened histogram as the feature vector
+	return hist.flatten()
 
 
 ###################################################################################################
@@ -99,7 +111,7 @@ for (i, imagePath) in enumerate(imagePaths):
 	 
 	# update the raw images, features, and labels matricies,
 	# respectively
-	#rawImages.append(pixels)
+	
 	features.append(image_feature)
 	labels.append(label)
 	#print(labels)
@@ -114,4 +126,5 @@ features_array = np.array(features)
 print(features_array.shape)
 labels_array = np.array(labels)
 
+### Saving the histogram features in a file
 np.savez('potholes_features', features_array, labels_array)
