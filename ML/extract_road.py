@@ -19,26 +19,34 @@ def booya(img):
     std_s = np.std(s)
     std_v = np.std(v)
 
-    lower_threshold = np.array([mean_h - std_h, mean_s - std_s, mean_v - std_v])
-    upper_threshold = np.array([mean_h + std_h, mean_s + std_s, mean_v + std_v])
+    lower_threshold = np.array([mean_h - 3*std_h, mean_s - 3*std_s, mean_v - 3*std_v])
+    upper_threshold = np.array([mean_h + 3*std_h, mean_s + 3*std_s, mean_v + 3*std_v])
     mask = cv2.inRange(hsv, lower_threshold, upper_threshold)
+    mask_cpy = np.array(mask, copy=True)
+    # closing = cv2.morphologyEx(mask, cv2.MORPH_OPEN, (15, 15))
+    dilate = cv2.dilate(mask, (15, 15), iterations=1)
     thresh = cv2.bitwise_and(resized, resized, mask=mask)
 
-    im2, contour, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    im2, contour, hierarchy = cv2.findContours(mask_cpy, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-    points = []
-    for cnt in contour:
-        hull = cv2.convexHull(contour[0])
-        points.extend(hull)
-    hull = cv2.convexHull(np.array(points))
-    cv2.drawContours(resized, hull, -1, (0, 255, 0), 3)
+    # points = []
+    # for cnt in contour:
+    #     hull = cv2.convexHull(contour[0])
+    #     points.extend(hull)
+    # hull = cv2.convexHull(np.array(points))
+    cnt = max(contour, key = cv2.contourArea)
+    hull = cv2.convexHull(cnt)
+
+    new_mask = np.zeros_like(mask)
+    cv2.fillConvexPoly(new_mask, hull, 1)
+    result = cv2.bitwise_and(resized, resized, mask=new_mask)
     fig = plt.figure()
 
-    images = [resized, mask, img]
+    images = [resized, mask, result]
     # titles = [""]
 
     for i in range(len(images)):
-        ax = fig.add_subplot(3, 2, i + 1)
+        ax = fig.add_subplot(2, 2, i + 1)
         # ax.set_title(titles[i])
         ax.imshow(images[i], cmap="gray")
         plt.axis("off")
