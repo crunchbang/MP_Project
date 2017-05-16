@@ -111,7 +111,7 @@ For machine learning technique we used annotated dataset \cite{dataset} for trai
 
 In this section we briefly familiarize the methodology that we used for the visualisation and detection of potholes in detail. The subsequent section first discusses about the image processing techniques that are helpful for pothole visualisation followed by feature extraction and machine learning learning techniques  used in the study.
 
-\subsection{Image Processing Techniques}
+\subsection{Pothole Visualisation Techniques}
 
 \subsubsection{Morphological Transformation Method}
 We used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding were applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.
@@ -206,14 +206,19 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 
 \newpage
 
-\subsubsection{Blob Detection Method}
+\vspace*{.5cm}
+
+
+\subsubsection*{Blob Detection Method}
 
 The extracted road area is then analysed further for pothole visualisation. In computer vision, blob detection methods are aimed at detecting regions in a digital image that differ in properties, such as brightness or color, compared to surrounding regions. Since we assume that pothole appear in the road in different texture than that of the road area mainly in dark shadowed regions some time it appear as though it is covered in mud and water. Since there is a differentiating factor that make pothole identifiable in the road we used blob detection algorithms to highlight the potholes.
 
-\subsubsection{Contour dilation Method}
+\vspace*{.5cm}
+
+\subsubsection*{Contour dilation Method}
 The extracted road area could also be analysed using contour detection or edge detection (Canny edge detection) further for highlighting the presence of the potholes. But the results obtained for the potholes were sub\-optimal. Since potholes appear in varied shape and color better discrimination from other object on the road could not be achieved. 
 
-\subsection{Machine Learning Techniques}
+\subsection{Pothole detection using machine learning techniques}
 
 In this section we describe in details the various machine learning techniques that we used for detecting the presence of the pothole in the roads.
 
@@ -341,7 +346,17 @@ We would like to thank Prof. Dinesh Babu Jayagopi for guiding us throughout this
 
 \appendices
 \section{Data and Code}
-Appendix one text goes here.
+\begin{itemize}
+\item Data 
+\begin{itemize}
+\item Data Set I - \url{https://www.youtube.com/watch?v=hmeBmdZzlLU}
+\item Data Set II - \url{https://www.youtube.com/playlist?list=PLzf2LOyk6iN3nNyvu1RI0Np-i8kT1IGE0}
+\item Data Set III \cite{dataset}
+\end{itemize}
+
+\item Code - \url{https://github.com/crunchbang/MP_Project/blob/master/Code/}
+\item Road Extraction Video - \url{https://www.youtube.com/watch?v=4vUqzDnZsV8}
+\end{itemize}
 
 % you can choose not to have a title for an appendix
 % if you want by leaving the argument blank
