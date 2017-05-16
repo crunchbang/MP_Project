@@ -89,7 +89,11 @@ In Nienaber et al (2015) \cite{paperone}, a system using basic image processing 
 The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015), Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it makes automated driving safer and easier in Indian roads. 
 
 \section{Proposed Work}
-In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. At first we used a Digital camera mounted on the window of a slow moving vehicle (40km/hr) to capture the potholes images. The images are captured at high resolution so that the analysis of the potholes will be easier. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes. 
+In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. High resolution image captured from the hood of a slow moving vehicle is used for analysis and experimentation. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes. 
+
+\vspace{0.5cm}
+
+Foliage, incoming vehicles and other background objects can interfere with the detection of potholes. In all the methods described below the area of the image containing the road is isolated and extracted. Subsequent processing is then done on this extracted area to detect the presence of potholes. 
 
 \vspace{0.5cm}
 
@@ -220,16 +224,16 @@ The extracted road area could also be analysed using contour detection or edge d
 
 \subsection{Pothole detection using machine learning techniques}
 
-In this section we describe in details the various machine learning techniques that we used for detecting the presence of the pothole in the roads.
+In this section we describe in details the various machine learning techniques that we used for detecting the presence of the pothole in the roads. As described in the previous section, the ROI containing the road is extracted using the previously mentioned Convex hull of contour method. This ROI is then subsequently processed by the models to detect the presence of potholes.
 
 \subsubsection{Feature Modelling}
 
 The feature extraction is done in two ways 
 \begin{itemize}
-\item Downscaled images as features \\
-The image is downscaled(100x100) into lower resolution and then flattened to be used as a feature.
+\item Downscaled image as features \\
+The image is downscaled by a factor of two and then flattened to be used as a feature vector.
 \item Color histogram as a feature \\
-The color histogram of the frame is take and is used as feature for training the classifier.
+The color histogram of the frame is taken and is used as feature for training the classifier.
 \end{itemize}
 
 
