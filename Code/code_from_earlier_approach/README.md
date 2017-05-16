@@ -1,25 +1,10 @@
-# ROADMAP
----------
+# README
 
-* Try and isolate the road from the background noise.
-* Extracting potholes from roads will be easier when the background has been eliminated.
-* Test methods on relatively easy test images (where the demarcation between the road and pothole is clear).
+Contains code from an earlier unsuccessful approach.
+This method sought to extract the road from the input image using morphological transformations. Code from other approaches that yeilded sub-optimal results have also been included.
 
-## Methods
+### DATA & RESULT
 
-### Smoothing to reduce noise
-* Gaussian Blur
-* Median Blur
-
-### Detect edges 
-Detect edges or contours to isolate and extract the road boundary from the environment.
-* Laplacian 
-* Sobel
-* Canny
-* Contour Detection
-
-### Clustering
-Try to color quantize or segment the image to see if boundary between road and pothole can be identified.
-* K-Means
-* Mean Shift
+Roads in E-City Phase 2 data & obtained result: https://www.youtube.com/playlist?list=PLzf2LOyk6iN1FZ9RoBSQYP_fwpZsWHuI5
+Roads in E-City Phase 2 (more data) : https://www.youtube.com/playlist?list=PLzf2LOyk6iN3nNyvu1RI0Np-i8kT1IGE0
 
