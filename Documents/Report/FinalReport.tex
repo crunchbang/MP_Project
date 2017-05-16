@@ -112,9 +112,14 @@ In this section we briefly familiarize the methodology that we used for the visu
 
 \subsection{Image Processing Techniques}
 
+\subsubsection{Morphological Transformation Method}
+
+
 \subsubsection{Road Isolation Method}
 
-The figure 2 show the image that we collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
+\noindent The figure 2 show the image that we collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
+
+\vspace{0.5cm}
 
 \begin{figure}[!htb]
 \begin{center}
@@ -131,7 +136,9 @@ The figure 2 show the image that we collected from the Digital camera. The image
 \caption{Converting to HSV}
 \end{figure}
 
-From the image then we select a region where the most part of the road appears, since we are using a fixed camera mounted on the window of a moving vehicle we assume that the road area tend to appear on a fixed region above the hood of the vehicle. Hence we select a Region of Interest from the (ROI) image as show in figure 4.
+\vspace{0.5cm}
+
+\noindent From the image we selected a region of interest (ROI) where the most part of the road appears, since we are using a fixed camera mounted on the window of a moving vehicle we assume that the road area tend to appear on a fixed region above the hood of the vehicle. Hence we select a Region of Interest from the (ROI) image as show in figure 4.
 
 \begin{figure}[!htb]
 \begin{center}
@@ -140,7 +147,8 @@ From the image then we select a region where the most part of the road appears, 
 \caption{Selecting the ROI}
 \end{figure}
 
-Figure 5 shows the enlarged ROI of the image. Then we convert the image to a binary image by selecting the gray scale channel. We apply thresholding on the binary image as show in the figure 6. Then the image is analysed using contour detection to find out the largest appearing contour in the selected ROI to extract the road area form the image. This largest contour servers as the mask for extracting the road. 
+\vspace{0.5cm}
+\noindent Figure 5 shows the enlarged ROI of the image. Then we convert the image to a binary image by selecting the gray scale channel. We apply thresholding on the binary image as show in the figure 6. Then the image is analysed using contour detection to find out the largest appearing contour in the selected ROI to extract the road area form the image. This largest contour servers as the mask for extracting the road. 
 
 \begin{figure}[!htb]
 \begin{center}
@@ -156,7 +164,10 @@ Figure 5 shows the enlarged ROI of the image. Then we convert the image to a bin
 \caption{Mask}
 \end{figure}
 
-The Figure 7 below indicated the convex hull of the largest contours selected from the thresholded images. This largest contour is used a mask to extract the road area as how in the Figure 9.
+\vspace{0.5cm}
+\noindent The Figure 7 below indicated the convex hull of the largest contours selected from the thresholded images. This largest contour is used a mask to extract the road area as how in the Figure 9.
+
+
 
 \begin{figure}[!htb]
 \begin{center}
@@ -166,13 +177,14 @@ The Figure 7 below indicated the convex hull of the largest contours selected fr
 \end{figure}
 
 
+
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[scale=1]{Images/6_Convex_hull.png}
 \end{center}
 \caption{Convex hull on Original Image}
 \end{figure}
-
+\newpage
 
 \begin{figure}[!htb]
 \begin{center}
@@ -187,7 +199,7 @@ The Figure 7 below indicated the convex hull of the largest contours selected fr
 
 The extracted road area is then analysed further for pothole visualisation. In computer vision, blob detection methods are aimed at detecting regions in a digital image that differ in properties, such as brightness or color, compared to surrounding regions. Since we assume that pothole appear in the road in different texture than that of the road area mainly in dark shadowed regions some time it appear as though it is covered in mud and water. Since there is a differentiating factor that make pothole identifiable in the road we used blob detection algorithms to highlight the potholes.
 
-\subsubsection{Contour Detection Method}
+\subsubsection{Contour dilation Method}
 The extracted road area could also be analysed using contour detection or edge detection (Canny edge detection) further for highlighting the presence of the potholes.
 
 \subsection{Machine Learning Techniques}
@@ -295,7 +307,7 @@ The color histogram as a feature worked relatively better when compared to the d
 95$\%$. SVM didn't give good accuracy in both color histogram as well as downscaled images.
 
 \section{Conclusion}
-The conclusion goes here.
+We presented a mix of methods, incorporating both image processing and machine learning, to detect the presence of potholes in an image. Given an image, the road was isolated and extracted with best results using contours and finding the convex hull of the largest contour. Through successive testing, it was found that using machine learning models yielded better results than conventional image processing methods as far as detection of potholes were concerned. The models were trained using features extracted from the isolated road segment. Comparison between the different methods of feature extraction and the performance of different models on these features have also been exhibited.
 
 
 %\appendices
@@ -362,6 +374,10 @@ The annotated image dataset used in the pothole detection is freely available at
 \bibitem{dataset1}
 Dataset with negative and positive examples separated
 \url{https://drive.google.com/drive/folders/0B7LHCitTUdEYZFEwNWo4V2RldjQ?usp=sharing}
+
+\bibitem{opencv}
+Open CV is used for Image processing and Machine Learning
+\url{http://docs.opencv.org/}
 
 \end{thebibliography}
 
