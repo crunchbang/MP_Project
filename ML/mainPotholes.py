@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cross_validation import train_test_split
 from sklearn import svm
 from sklearn import linear_model
+from sklearn.ensemble import RandomForestClassifier
 
 #########################################################################################################
 ### Loading the saved file with features
@@ -57,7 +58,7 @@ print("[INFO] Multinomial Logistic Regression's Accuracy: {:.2f}%".format(acc * 
 ### KNN Classifier
 # train and evaluate a k-NN classifer on the histogram
 # representations
-model = KNeighborsClassifier(n_neighbors=1000,n_jobs=10)
+model = KNeighborsClassifier(n_neighbors=20,n_jobs=10)
 model.fit(trainFeat, trainLabels)
 acc = model.score(testFeat, testLabels)
 print("[INFO] KNN's accuracy: {:.2f}%".format(acc * 100))
@@ -67,3 +68,12 @@ clf = linear_model.SGDClassifier()
 clf.fit(trainFeat, trainLabels)
 acc = clf.score(testFeat, testLabels)
 print("[INFO] SGD Classifier's accuracy with one against rest approach: {:.2f}%".format(acc * 100))
+
+#RandomForest
+model = RandomForestClassifier()
+model.fit(trainFeat,trainLabels)
+acc = model.score(testFeat,testLabels)
+print("Random Forest accuracy: {:.2f}%".format(acc * 100))
+
+
+#### maximum accuracy achieved till now is 68.9% accuracy with Multinomial Logistic Regression 
