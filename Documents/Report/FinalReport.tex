@@ -129,9 +129,9 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 
 \newpage
 
-\subsubsection{Road Isolation Method}
+\subsubsection{Visualisation from isolated roads}
 
-\noindent The figure 3 show the image which is collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
+\noindent The figure 3 show the image which is collected from the Digital camera. The image is then converted to its corresponding HSV channel because HSV channels captures the most variance in the image which aids is subsequent processing.  
 
 \vspace{0.5cm}
 
@@ -152,7 +152,7 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 
 \vspace{0.5cm}
 
-\noindent From the image we selected a region of interest (ROI) where the most part of the road appears, since we are using a fixed camera mounted on the window of a moving vehicle we assume that the road area tend to appear on a fixed region above the hood of the vehicle. Hence we select a Region of Interest from the (ROI) image as show in figure 5.
+\noindent From the image we select a region of interest (ROI) which contains the road area. Since we are using a fixed camera mounted on the window of a moving vehicle we assume that the road area tend to appear on a fixed region above the hood of the vehicle. Hence we select a Region of Interest from the (ROI) image as show in figure 5.
 
 \begin{figure}[!htb]
 \begin{center}
@@ -163,7 +163,10 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 
 \vspace{0.5cm}
 
-\noindent Figure 6 shows the enlarged ROI of the image. Then we convert the image to a binary image by selecting the gray scale channel. We apply thresholding on the binary image as show in the figure 7. Then the image is analysed using contour detection to find out the largest appearing contour in the selected ROI to extract the road area form the image. This largest contour servers as the mask for extracting the road. 
+% add modification here
+\noindent Figure 6 shows the enlarged ROI of the image. The mean and standard deviation per colour channel of this region of interest is calculated. In order to address the issue of road colour variation within the image, the road colour is modelled separately per channel as lying within three standard deviations of the mean of each channel. These thresholds were used to binarize the image, and the mask obtained is show in Figure 7. From the figure, it is clear that the average colour model does not match the entire road area as there are many areas of the road that were not included after the thresholding operation.
+Contour detection algorithm is then run on the extracted mask. It is assumed that the largest contour in the image will include the road and therefore only this contour is sent to the convex hull algorithm.
+The largest contour is received by the convex hull algorithm and the output of the algorithm is indicated in Figure 8.  Using a mask made of the computed convex hull, the road is extracted from the input image as shown in Figure 10.
 
 \begin{figure}[!htb]
 \begin{center}
@@ -181,7 +184,7 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 
 \vspace{0.5cm}
 
-\noindent The Figure 8 below indicated the convex hull of the largest contours selected from the thresholded images. This largest contour is used a mask to extract the road area as shown in the Figure 10.
+\noindent The Figure 8 below indicates the convex hull of the largest contours selected from the threshold images. This largest contour is used a mask to extract the road area as shown in the Figure 10.
 
 
 \begin{figure}[!htb]
@@ -208,7 +211,7 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 \caption{Extracted Road}
 \end{figure}
 
-\newpage
+
 
 \vspace*{.5cm}
 
@@ -220,7 +223,7 @@ The extracted road area is then analysed further for pothole visualisation. In c
 \vspace*{.5cm}
 
 \subsubsection*{Contour dilation Method}
-The extracted road area could also be analysed using contour detection or edge detection (Canny edge detection) further for highlighting the presence of the potholes. But the results obtained for the potholes were sub\-optimal. Since potholes appear in varied shape and color better discrimination from other object on the road could not be achieved. 
+The extracted road area could also be analysed using contour detection or edge detection (Canny edge detection). The detected edges could be dilated for highlighting the presence of potholes. But the results obtained for the potholes were sub\-optimal. Since potholes appear in varied shape and color better discrimination from other object on the road could not be achieved. 
 
 \subsection{Pothole detection using machine learning techniques}
 
@@ -233,22 +236,27 @@ The feature extraction is done in two ways
 \item Downscaled image as features \\
 The image is downscaled by a factor of two and then flattened to be used as a feature vector.
 \item Color histogram as a feature \\
-The color histogram of the frame is taken and is used as feature for training the classifier.
+A color histogram of an image represents the distribution of the composition of colors in the image. It shows different types of colors appeared and the number of pixels in each type of the colors appeared.
+
+\vspace*{0.5cm}
+
+"The histogram provides a compact summarization of the distribution of data in an image. The color histogram of an image is relatively invariant with translation and rotation about the viewing axis, and varies only slowly with the angle of view. By comparing histograms signatures of two images and matching the color content of one image with the other, the color histogram is particularly well suited for the problem of recognizing an object of unknown position and rotation within a scene" \cite{hist}
+% add here.
 \end{itemize}
 
 
 \subsubsection{Machine Learning Algorithms}
 
-The following list of machine learning techniques were used in the study. They were trained using the above mentioned feature and the results were analysed.
+The following list of machine learning techniques were used in the study. They are trained using the above mentioned feature and the results are analysed.
 
 \begin{itemize}
-\item Logistic Regression \cite{lr}
-\item Decision Tree \cite{dt}
-\item AdaBoost using Decision Tree
-\item GaussianNB
 \item KNN \cite{knn}
+\item GaussianNB
+\item Logistic Regression \cite{lr}
 \item SVM \cite{svm}
+\item Decision Tree \cite{dt}
 \item Random Forest \cite{rf}
+\item AdaBoost using Decision Tree
 \end{itemize}
 
 \section{Results}
@@ -261,7 +269,7 @@ The image processing techniques gave us suboptimal results. Method I using morph
 \subsection{Pothole detection using Machine Learning Techniques}
 
 The classifier are trained using the feature and the results obtained are shared in the below tables.
-The table below show the result obtained while using the Downscaled image as features.
+The table below show the result obtained while using the downscaled image as features.
 \begin{center}
 \begin{table}[h!]
 \centering
@@ -327,7 +335,7 @@ As we can infer from the tables that the classification using downscaled images 
 
 \vspace{0.5cm}
 
-The color histogram as a feature worked relatively better when compared to the downscaled images. We were pretty surprised to see the performance of color histogram using Random Forest which gives at accuracy of 
+The color histogram as a feature worked relatively better when compared to the downscaled images. We were pretty surprised to see the performance of color histogram using Random Forest which gives an accuracy of 
 95$\%$. SVM didn't give good accuracy in both color histogram as well as downscaled images.
 
 \section{Conclusion}
@@ -339,7 +347,7 @@ The present work yields sub\-optimal results in scenes features heavy shadows. B
 
 % use section* for acknowledgment
 \section*{Acknowledgment}
-We would like to thank Prof. Dinesh Babu Jayagopi for guiding us throughout this venture, Prof. MJ (Thinus) Booysen, Associate Professor at the Electrical $\&$ Electronic Engineering Department at Stellenbosch University for allowing us to use pothole datasets \cite{dataset}.
+We would like to thank Prof. Dinesh Babu Jayagopi for guiding us throughout this venture, Prof. MJ (Thinus) Booysen, Associate Professor at the Electrical $\&$ Electronic Engineering Department at Stellenbosch University for prividing us with the pothole datasets \cite{dataset}.
 
 \vspace{0.5cm}
 
@@ -415,6 +423,11 @@ Dataset with negative and positive examples separated
 \bibitem{opencv}
 Open CV is used for Image processing and Machine Learning
 \url{http://docs.opencv.org/}
+
+
+\bibitem{hist}
+Color Histogram
+\url{https://en.wikipedia.org/wiki/Color_histogram}
 
 \end{thebibliography}
 
