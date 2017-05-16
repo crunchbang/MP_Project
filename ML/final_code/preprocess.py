@@ -143,7 +143,6 @@ def extract_road(img_name, img, verbose=False):
 
     return result
 
-
 if __name__ == "__main__":
     train_positive = "Subset 1 (Simplex)/Train Data/Positive Data/"
     train_negative = "Subset 1 (Simplex)/Train Data/Positive Data/"
