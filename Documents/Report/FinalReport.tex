@@ -79,8 +79,7 @@ The project aims to provide a comprehensive set of assistance features to aid th
 \end{figure}
 
 The remainder of the paper is structured as follows. We present a brief history of the related work done so far in the field of pothole detection and visualisation in Section 2. Section 3 discusses about the experimental set up we used in this work.In the subsequent section we describes the methodology that we follow in the following section 4. It includes road extraction part and blob detection part. Then the result that we obtained are given briefly in section 5. Finally section 6 concludes the paper. Section 7 gives a light to the future enhancements that could be done.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
+
 
 \section{Related Work}
 In Nienaber et al (2015) \cite{paperone}, a system using basic image processing techniques in a constrained environment without relying on any machine learning techniques is used for pothole detection. It presents a good preliminary method for detecting potholes using a single camera within an range of 2 - 20m from a vehicle moving at a speed of not more than 60km/hr. The method separates a rectangular area of interest just above the hood of the vehicle which contains road surface, assuming that driver maintains a safe distance from the front vehicle. The rectangular area of interest is separated by connecting the various farthest region of interest using convex hull algorithm.
@@ -93,6 +92,7 @@ The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a compre
 In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. At first we used a Digital camera mounted on the window of a slow moving vehicle (40km/hr) to capture the potholes images. The images are captured at high resolution so that the analysis of the potholes will be easier. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes. 
 
 \vspace{0.5cm}
+
 The subsequent subsection describes the approaches we took for visualising the potholes. We used contour detection after applying morphological transformation as a method I and then we used contour detection after extracting the road area by using convex hull algorithm in method II. The methods are described in detail below.
 
 \subsection{Using morphological transformation}
@@ -105,7 +105,7 @@ Morphological transformations are some simple operations based on the image shap
 For visualising the pothole we first extract a region of the interest from the given image which will contain the road area. This is done by first selecting the largest contour on the images ROI and then drawing convex hull using convex hull algorithm. Since extracting the road area will help to narrow down the area of interest. This way we will be able to prevent the irrelevant informations from the analysis like foliage, vehicle hood, other vehicles on the road etc. We then apply image processing techniques like contour detection, blob detection and edge detection to draw a bounding box over the area of the road which contains the potholes.
 
 \subsection{Using Machine Learning Methods}
-For machine learning technique we use annotated dataset \cite{dataset} for training various classifiers and then try various machine learning algorithms to figure out the presence of a pothole in the frame given.
+For machine learning technique we used annotated dataset \cite{dataset} for training various classifiers and then try various machine learning algorithms to figure out the presence of a pothole in the frame given.
 
 \section{Methodology}
 
@@ -127,7 +127,7 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 
 \subsubsection{Road Isolation Method}
 
-\noindent The figure 3 show the image that we collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
+\noindent The figure 3 show the image which is collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
 
 \vspace{0.5cm}
 
@@ -158,6 +158,7 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 \end{figure}
 
 \vspace{0.5cm}
+
 \noindent Figure 6 shows the enlarged ROI of the image. Then we convert the image to a binary image by selecting the gray scale channel. We apply thresholding on the binary image as show in the figure 7. Then the image is analysed using contour detection to find out the largest appearing contour in the selected ROI to extract the road area form the image. This largest contour servers as the mask for extracting the road. 
 
 \begin{figure}[!htb]
@@ -175,8 +176,8 @@ We used erosion to detect contours around potholes in the images. Gaussian Blur 
 \end{figure}
 
 \vspace{0.5cm}
-\noindent The Figure 8 below indicated the convex hull of the largest contours selected from the thresholded images. This largest contour is used a mask to extract the road area as how in the Figure 10.
 
+\noindent The Figure 8 below indicated the convex hull of the largest contours selected from the thresholded images. This largest contour is used a mask to extract the road area as shown in the Figure 10.
 
 
 \begin{figure}[!htb]
@@ -282,6 +283,8 @@ The table below show the result obtained while using the Downscaled image as fea
 \end{table}
 \end{center}
 
+\vspace{0.5cm}
+
 The table below show the result obtained while using the color histogram as features.
 \begin{center}
 \begin{table}[h!]
@@ -313,6 +316,8 @@ The table below show the result obtained while using the color histogram as feat
 
 As we can infer from the tables that the classification using downscaled images worked well when decision trees and AdaBoost using decision tree are used. Meanwhile Gaussian Naive Bayes performed the worst using downscaled images.
 
+\vspace{0.5cm}
+
 The color histogram as a feature worked relatively better when compared to the downscaled images. We were pretty surprised to see the performance of color histogram using Random Forest which gives at accuracy of 
 95$\%$. SVM didn't give good accuracy in both color histogram as well as downscaled images.
 
@@ -327,9 +332,22 @@ The present work yields sub\-optimal results in scenes features heavy shadows. B
 \section*{Acknowledgment}
 We would like to thank Prof. Dinesh Babu Jayagopi for guiding us throughout this venture, Prof. MJ (Thinus) Booysen, Associate Professor at the Electrical $\&$ Electronic Engineering Department at Stellenbosch University for allowing us to use pothole datasets \cite{dataset}.
 
+\vspace{0.5cm}
+
 \ifCLASSOPTIONcaptionsoff
   \newpage
 \fi
+
+
+\appendices
+\section{Data and Code}
+Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+%\section{}
+%Appendix two text goes here.
+
 
 \begin{thebibliography}{1}
 
