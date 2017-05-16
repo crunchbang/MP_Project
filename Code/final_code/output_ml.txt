@@ -1,0 +1,113 @@
+Starting Training
+Extracting from image N_1.JPG
+Extracting from image N_10.JPG
+Extracting from image N_11.JPG
+Extracting from image N_12.JPG
+Extracting from image N_13.JPG
+Extracting from image N_14.JPG
+Extracting from image N_15.JPG
+Extracting from image N_16.JPG
+Extracting from image N_17.JPG
+Extracting from image N_18.JPG
+Extracting from image N_19.JPG
+Extracting from image N_2.JPG
+Extracting from image N_20.JPG
+Extracting from image N_21.JPG
+Extracting from image N_22.JPG
+Extracting from image N_23.JPG
+Extracting from image N_24.JPG
+Extracting from image N_25.JPG
+Extracting from image N_26.JPG
+Extracting from image N_27.JPG
+Extracting from image N_28.JPG
+Extracting from image N_29.JPG
+Extracting from image N_3.JPG
+Extracting from image N_30.JPG
+Extracting from image N_31.JPG
+Extracting from image N_32.JPG
+Extracting from image N_33.JPG
+Extracting from image N_34.JPG
+Extracting from image N_35.JPG
+Extracting from image N_36.JPG
+Extracting from image N_4.JPG
+Extracting from image N_5.JPG
+Extracting from image N_6.JPG
+Extracting from image N_7.JPG
+Extracting from image N_8.JPG
+Extracting from image N_9.JPG
+Extracting from image P_1.JPG
+Extracting from image P_10.JPG
+Extracting from image P_11.JPG
+Extracting from image P_12.JPG
+Extracting from image P_13.JPG
+Extracting from image P_14.JPG
+Extracting from image P_15.JPG
+Extracting from image P_16.JPG
+Extracting from image P_17.JPG
+Extracting from image P_18.JPG
+Extracting from image P_19.JPG
+Extracting from image P_2.JPG
+Extracting from image P_20.JPG
+Extracting from image P_21.JPG
+Extracting from image P_22.JPG
+Extracting from image P_23.JPG
+Extracting from image P_24.JPG
+Extracting from image P_25.JPG
+Extracting from image P_26.JPG
+Extracting from image P_27.JPG
+Extracting from image P_28.JPG
+Extracting from image P_29.JPG
+Extracting from image P_3.JPG
+Extracting from image P_30.JPG
+Extracting from image P_31.JPG
+Extracting from image P_32.JPG
+Extracting from image P_33.JPG
+Extracting from image P_34.JPG
+Extracting from image P_35.JPG
+Extracting from image P_36.JPG
+Extracting from image P_37.JPG
+Extracting from image P_38.JPG
+Extracting from image P_39.JPG
+Extracting from image P_4.JPG
+Extracting from image P_40.JPG
+Extracting from image P_41.JPG
+Extracting from image P_42.JPG
+Extracting from image P_43.JPG
+Extracting from image P_44.JPG
+Extracting from image P_45.JPG
+Extracting from image P_5.JPG
+Extracting from image P_6.JPG
+Extracting from image P_7.JPG
+Extracting from image P_8.JPG
+Extracting from image P_9.JPG
+Extraction done
+81
+Extracted feature labels
+Using Downscaled image features
+Training Gaussian
+Training KNN
+Training SVM
+Training Decision Trees
+Training AdaBoost
+
+Prediction score for
+Decision Tree:86.8852459016
+AdaBoost using Decision Tree:80.3278688525
+GaussianNB:44.262295082
+KNN:73.7704918033
+SVM:55.737704918
+
+Using Color histogram features
+Training Gaussian
+Training KNN
+Training SVM
+Training Decision Trees
+Training AdaBoost
+
+Prediction score for
+Decision Tree:77.0491803279
+AdaBoost using Decision Tree:83.606557377
+GaussianNB:75.4098360656
+KNN:78.6885245902
+SVM:55.737704918
+
