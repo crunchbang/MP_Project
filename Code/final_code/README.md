@@ -35,6 +35,7 @@ The following models have been used for classification:
 * K-Nearest Neighbour
 * SVM
 * Decision Trees
+* Random Forest
 * AdaBoost (using Decision Trees)
 
 #### [pothole_img_proc.py](https://github.com/crunchbang/MP_Project/blob/master/ML/final_code/pothole_img_proc.py)
