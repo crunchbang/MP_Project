@@ -12,290 +12,6 @@
 
 
 
-% *** CITATION PACKAGES ***
-%
-\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
-
-
-
-
-
-% *** GRAPHICS RELATED PACKAGES ***
-%
-\ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation
-% can be obtained at: 
-% http://www.ctan.org/pkg/graphicx
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found at:
-% http://www.ctan.org/pkg/epslatex
-%
-
-% *** CITATION PACKAGES ***
-%
-%\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
-
-
-
-
-
-% *** GRAPHICS RELATED PACKAGES ***
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
-
-
-
-
-
-% *** MATH PACKAGES ***
-%
-%\usepackage{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics.
-%
-% Note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/amsmath
-
-
-
-
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/pkg/algorithms
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/pkg/algorithmicx
-
-
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
-
-
-% *** SUBFIGURE PACKAGES ***
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
-% for subfigure.sty, the latter of which is no longer maintained and is
-% incompatible with some LaTeX packages including fixltx2e. However,
-% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
-% which will override IEEEtran.cls' handling of captions and this will result
-% in non-IEEE style figure/table captions. To prevent this problem, be sure
-% and invoke subfig.sty's "caption=false" package option (available since
-% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
-% handling of captions.
-% Note that the Computer Society format requires a larger sans serif font
-% than the serif footnote size font used in traditional IEEE formatting
-% and thus the need to invoke different subfig.sty package options depending
-% on whether compsoc mode has been enabled.
-%
-% The latest version and documentation of subfig.sty can be obtained at:
-% http://www.ctan.org/pkg/subfig
-
-
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure.
-% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
-% corrections already built into the system in which case a warning will
-% be issued if an attempt is made to load fixltx2e.sty as it is no longer
-% needed.
-% The latest version and documentation can be found at:
-% http://www.ctan.org/pkg/fixltx2e
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/stfloats
-% Do not use the stfloats baselinefloat ability as the IEEE does not allow
-% \baselineskip to stretch. Authors submitting work to the IEEE should note
-% that the IEEE rarely uses double column equations and that authors should try
-% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
-% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
-% such ways.
-% Do not attempt to use stfloats with fixltx2e as they are incompatible.
-% Instead, use Morten Hogholm'a dblfloatfix which combines the features
-% of both fixltx2e and stfloats:
-%
-% \usepackage{dblfloatfix}
-% The latest version can be found at:
-% http://www.ctan.org/pkg/dblfloatfix
-
-
-
-
-%\ifCLASSOPTIONcaptionsoff
-%  \usepackage[nomarkers]{endfloat}
-% \let\MYoriglatexcaption\caption
-% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
-%\fi
-% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
-% Axel Sommerfeldt. This package may be useful when used in conjunction with 
-% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
-% submissions have lists of figures/tables at the end of the paper and that
-% figures/tables without any captions are placed on a page by themselves at
-% the end of the document. If needed, the draftcls IEEEtran class option or
-% \CLASSINPUTbaselinestretch interface can be used to increase the line
-% spacing as well. Be sure and use the nomarkers option of endfloat to
-% prevent endfloat from "marking" where the figures would have been placed
-% in the text. The two hack lines of code above are a slight modification of
-% that suggested by in the endfloat docs (section 8.4.1) to ensure that
-% the full captions always appear in the list of figures/tables - even if
-% the user used the short optional argument of \caption[]{}.
-% IEEE papers do not typically make use of \caption[]'s optional argument,
-% so this should not be an issue. A similar trick can be used to disable
-% captions of packages such as subfig.sty that lack options to turn off
-% the subcaptions:
-% For subfig.sty:
-% \let\MYorigsubfloat\subfloat
-% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
-% However, the above trick will not work if both optional arguments of
-% the \subfloat command are used. Furthermore, there needs to be a
-% description of each subfigure *somewhere* and endfloat does not add
-% subfigure captions to its list of figures. Thus, the best approach is to
-% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
-% and instead reference/explain all the subfigures within the main caption.
-% The latest version of endfloat.sty and its documentation can obtained at:
-% http://www.ctan.org/pkg/endfloat
-%
-% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
-% later in the document, say, to conditionally put the References on a 
-% page by themselves.
-
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/url
-% Basically, \url{my_url_here}.
-
-
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -324,11 +40,7 @@
         Anoop~Toffy,
         Athul~Suresh,
         and~Tarini~Chandrashekhar,~\IEEEmembership{International Institute of Information Technology, Bangalore}}% <-this % stops a space
-%\thanks{M. Shell was with the Department
-%of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
-%GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this % stops a space
-%\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
-%\thanks{Manuscript received April 19, 2005; revised August 26, 2015.}}
+
 
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
@@ -361,22 +73,8 @@
 % You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
 % you desire.
 
-
-
-
-% If you want to put a publisher's ID mark on the page you can do it like
-% this:
-%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
-% Remember, if you use this you must call \IEEEpubidadjcol in the second
-% column for its text to clear the IEEEpubid mark.
-
-
-
 % use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
+\IEEEspecialpapernotice{(Draft Paper)}
 
 % make the title area
 \maketitle
@@ -405,7 +103,9 @@ Image processing, Machine Learning, Pot hole detection, Clustering
 
 
 \section{Introduction}
-The project aims to provide a comprehensive set of assistance features to aid the driver (or autonomous vehicle) to drive safely. This could includes a number of indicators about the environment, the major cue being detection of potholes in the road ahead. 
+The project aims to provide a comprehensive set of assistance features to aid the driver (or autonomous vehicle) to drive safely. This could includes a number of indicators about the environment, the major cue being visualisation and detection of potholes in the road ahead. 
+
+"A pothole \cite{pothole} is a structural failure in a road surface, caused by failure primarily in asphalt pavement due to the presence of water in the underlying soil structure and the presence of traffic passing over the affected area". An example of a road with pothole is shown in Figure 1.
 
 \begin{figure}[!h]
 \begin{center}
@@ -414,7 +114,7 @@ The project aims to provide a comprehensive set of assistance features to aid th
 \caption{Pothole example}
 \end{figure}
 
-The remainder of the paper is structured as follows. We present a brief history of the related work done so far in the field of pothole detection in section 2. Section 3 discusses about the experimental setup we flow in this work. We describes the methodology that we follow in the following section 4. It includes road extraction part and blob detection part. Then the result that we obtained are given briefly in section 5. Finally section 6 concludes the paper.
+The remainder of the paper is structured as follows. We present a brief history of the related work done so far in the field of pothole detection and visualisation in Section 2. Section 3 discusses about the experimental set up we used in this work.In the subsequent section we describes the methodology that we follow in the following section 4. It includes road extraction part and blob detection part. Then the result that we obtained are given briefly in section 5. Finally section 6 concludes the paper.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
@@ -426,43 +126,90 @@ In Nienaber et al (2015) \cite{paperone}, a system using basic image processing 
 The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015), Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it makes automated driving safer and easier in Indian roads. 
 
 \section{Proposed Work}
+In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. At first we used a Digital camera mounted on the window of a slow moving vehicle to capture the potholes images. The images are captured at high resolution so that the analysis of the potholes will be easier. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes.
+
+For visualising the pothole we first extract a region of the interest from the given image which will contain the road area. Since extracting the road area will help to narrow down the area of interest. This way we will be able to prevent the irrelevant informations from the analysis like foliage, vehicle hood, other vehicles on the road etc. We then apply image processing techniques like contour detection, blob detection and edge detection to draw a bounding box over the area of the road which contains the potholes.
+
+For machine learning technique we use annotated dataset \cite{dataset} for training various classifiers and then try various machine learning algorithms to figure out the presence of a pothole in the frame given.
 
 \section{Methodology}
+
+In this section we briefly familiarize the methodology that we used for the visualisation and detection of potholes in detail. The subsequent section first discusses about the image processing techniques that are helpful for pothole visualisation followed by feature extraction and machine learning learning techniques  used in the study.
 
 \subsection{Image Processing Techniques}
 
 \subsubsection{Road Extraction Method}
 
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.25]{Images/roi.jpg}
+\end{center}
+\caption{ROI Selection}
+\end{figure}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.25]{Images/roi.jpg}
+\end{center}
+\caption{Mask}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.25]{Images/roi.jpg}
+\end{center}
+\caption{Application of Mask}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.25]{Images/roi.jpg}
+\end{center}
+\caption{Extracted Road}
+\end{figure}
+
 \subsubsection{Blob Detection Method}
+
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.25]{Images/roi.jpg}
+\end{center}
+\caption{Highlighted Contours of Potholes}
+\end{figure}
 
 \subsection{Machine Learning Techniques}
 
+In this section we describe in details the various machine learning techniques that we used for detecting the presence of the pothole in the roads.
+
+\subsubsection{Feature Modelling}
+
+We used SIFT and SURF detectors to extract feature from the image and train the classifier.
+
+\subsubsection{Machine Learning Algorithms}
+
+\begin{itemize}
+\item SVM
+
+\item KNN
+
+\end{itemize}
+
 \section{Results}
+We collected a set of images from various lightening conditions for our analysis. The annotation of the potholes has been done manually. The data set is then divided into Positive and Negative samples. 
 
 \subsection{Pothole visualisation using Image processing Techniques}
 
+
+
 \subsection{Pothole detection using Machine Learning Techniques}
+
+
+A table containing the accuracy of the ML techniques that we used.
 
 \section{Conclusion}
 The conclusion goes here.
-
-
-
-
-
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
 
 
 \appendices
@@ -505,31 +252,34 @@ S. Nienaber, R.S. Kroon, M.J. Booysen
 IEEE CIVTS, December 2015, Cape Town, South Africa.
  
 \bibitem{dataset}
-The annotated image dataset used in the pothole detection paper is freely available at
+The annotated image dataset used in the pothole detection is freely available at
 \url{https://goo.gl/3QyeMs}
 
+\bibitem{pothole}
+\url{https://en.wikipedia.org/wiki/Pothole}
 
 \end{thebibliography}
 
-\begin{IEEEbiography}{Akanksha Dwivedi}
-Biography text here.
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/akanksha.jpg}}]{Akanksha Dwivedi}
+is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 \end{IEEEbiography}
 
 % if you will not have a photo at all:
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{anoop.jpg}}]{Anoop Toffy}
- is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 \end{IEEEbiography}
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
 
-\begin{IEEEbiography}{Athul Suresh}
-Biography text here.
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/athul.jpg}}]{Athul Suresh}
+is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 \end{IEEEbiography}
 
-\begin{IEEEbiography}{Tarini Chandrashekhar}
-Biography text here.
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/tarini.jpg}}]{Tarini Chandrashekhar}
+is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+
 \end{IEEEbiography}
 
 \end{document}
