@@ -35,7 +35,7 @@
 
 
 % The paper headers
-\markboth{Project Report, \today}%
+\markboth{Machine Perception Project Report, Group 7, \today}%
 {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
 
 \IEEEspecialpapernotice{(Draft Paper)}
@@ -118,7 +118,8 @@ In this section we briefly familiarize the methodology that we used for the visu
 \subsection{Pothole Visualisation Techniques}
 
 \subsubsection{Morphological Transformation Method}
-We used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding were applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.
+The image is smoothed using Gaussian blur and then thresholding is applied. Then opening and closing morphological transformation are applied to clear off the noise in the image and then road area is extracted from the output image. From the extracted road area we applied edge detection methods to find potholes present in the image. This technique works on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.
+
 
 \begin{figure}[!htb]
 \begin{center}
@@ -430,6 +431,8 @@ Color Histogram
 \url{https://en.wikipedia.org/wiki/Color_histogram}
 
 \end{thebibliography}
+
+\newpage
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/akanksha.jpg}}]{Akanksha Dwivedi}
 (MT2016006) is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
