@@ -78,7 +78,7 @@ The project aims to provide a comprehensive set of assistance features to aid th
 \caption{Pothole example}
 \end{figure}
 
-The remainder of the paper is structured as follows. We present a brief history of the related work done so far in the field of pothole detection and visualisation in Section 2. Section 3 discusses about the experimental set up we used in this work.In the subsequent section we describes the methodology that we follow in the following section 4. It includes road extraction part and blob detection part. Then the result that we obtained are given briefly in section 5. Finally section 6 concludes the paper.
+The remainder of the paper is structured as follows. We present a brief history of the related work done so far in the field of pothole detection and visualisation in Section 2. Section 3 discusses about the experimental set up we used in this work.In the subsequent section we describes the methodology that we follow in the following section 4. It includes road extraction part and blob detection part. Then the result that we obtained are given briefly in section 5. Finally section 6 concludes the paper. Section 7 gives a light to the future enhancements that could be done.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
@@ -96,7 +96,7 @@ The subsequent subsection describes the approaches we took for visualising the p
 
 \subsection{Using morphological transformation}
 
-We used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding were applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.
+Morphological transformations are some simple operations based on the image shape. It is normally performed on binary images. Two basic morphological operators are Erosion and Dilation. Using which the image is analysed to visualise the pothole present in the region.
 
 
 \subsection{Using contours and convex hull}
@@ -113,7 +113,14 @@ In this section we briefly familiarize the methodology that we used for the visu
 \subsection{Image Processing Techniques}
 
 \subsubsection{Morphological Transformation Method}
+We used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding were applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.
 
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.065]{Images/morph_transform_2.png}
+\end{center}
+\caption{Pothole example}
+\end{figure}
 
 \subsubsection{Road Isolation Method}
 
@@ -309,6 +316,8 @@ The color histogram as a feature worked relatively better when compared to the d
 \section{Conclusion}
 We presented a mix of methods, incorporating both image processing and machine learning, to detect the presence of potholes in an image. Given an image, the road was isolated and extracted with best results using contours and finding the convex hull of the largest contour. Through successive testing, it was found that using machine learning models yielded better results than conventional image processing methods as far as detection of potholes were concerned. The models were trained using features extracted from the isolated road segment. Comparison between the different methods of feature extraction and the performance of different models on these features have also been exhibited.
 
+\section{Future Work $\&$ Improvements}
+The present work yields sub\-optimal results in scenes features heavy shadows. Better discriminating features could be extracted which helps to discern potholes even in environments where the lighting is uneven and interspersed with shadows. Methods could be developed to accommodate the presence of incoming traffic and road markings.
 
 %\appendices
 %\section{Pseudo code for Image processing}
