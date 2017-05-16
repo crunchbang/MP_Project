@@ -58,6 +58,12 @@ def extract_features(img):
 	im2, contours, hierarchy = cv2.findContours(dilation, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 	cv2.drawContours(feature, contours, -1, (255,0,255), 3)
 
+	# # Set up the detector with default parameters.
+	# detector = cv2.SimpleBlobDetector()
+ 
+	# # Detect blobs.
+	# keypoints = detector.detect(feature)
+
 	hist_features = extract_color_histogram(feature)
 	return hist_features
 
@@ -80,7 +86,7 @@ def extract_color_histogram(image):
 
 
 i=1
-size = (480, 360)
+size = (1920, 1080)
 
 # grab the list of images that we'll be describing
 print("[INFO] Extracting features from images...")
@@ -126,5 +132,4 @@ features_array = np.array(features)
 print(features_array.shape)
 labels_array = np.array(labels)
 
-### Saving the histogram features in a file
 np.savez('potholes_features', features_array, labels_array)
