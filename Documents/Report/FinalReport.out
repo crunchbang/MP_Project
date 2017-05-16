@@ -8,10 +8,10 @@
 \BOOKMARK [2][-]{subsection.4.1}{Image Processing Techniques}{section.4}% 8
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Road Isolation Method}{subsection.4.1}% 9
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Blob Detection Method}{subsection.4.1}% 10
-\BOOKMARK [2][-]{subsection.4.2}{Contour Detection Method}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.3}{Machine Learning Techniques}{section.4}% 12
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Feature Modelling}{subsection.4.3}% 13
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Machine Learning Algorithms}{subsection.4.3}% 14
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Contour Detection Method}{subsection.4.1}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Machine Learning Techniques}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Feature Modelling}{subsection.4.2}% 13
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Machine Learning Algorithms}{subsection.4.2}% 14
 \BOOKMARK [1][-]{section.5}{Results}{}% 15
 \BOOKMARK [2][-]{subsection.5.1}{Pothole visualisation using Image processing Techniques}{section.5}% 16
 \BOOKMARK [2][-]{subsection.5.2}{Pothole detection using Machine Learning Techniques}{section.5}% 17

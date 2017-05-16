@@ -92,12 +92,11 @@ The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a compre
 \section{Proposed Work}
 In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. At first we used a Digital camera mounted on the window of a slow moving vehicle (40km/hr) to capture the potholes images. The images are captured at high resolution so that the analysis of the potholes will be easier. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes. 
 
-The subsequent subsection describes the approaches we took for visualising the potholes. We used contour detection after applying morphological transformation as a method I and then we used contour detection after extracting the road area by using convex hull algorithms in method II. The methods are described in detail below.
+The subsequent subsection describes the approaches we took for visualising the potholes. We used contour detection after applying morphological transformation as a method I and then we used contour detection after extracting the road area by using convex hull algorithm in method II. The methods are described in detail below.
 
 \subsection{Using morphological transformation}
 
-Morphological Transformations, we used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding was applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected
-too much noise in our dataset along with a fraction of potholes.
+We used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding were applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected too much noise in our dataset along with a fraction of potholes.
 
 
 \subsection{Using contours and convex hull}
@@ -119,7 +118,7 @@ The figure 2 show the image that we collected from the Digital camera. The image
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.65]{Images/0_Original.png}
+\includegraphics[scale=1]{Images/0_Original.png}
 \end{center}
 \caption{Pothole Image}
 \end{figure}
@@ -127,7 +126,7 @@ The figure 2 show the image that we collected from the Digital camera. The image
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.65]{Images/1_HSV.png}
+\includegraphics[scale=1]{Images/1_HSV.png}
 \end{center}
 \caption{Converting to HSV}
 \end{figure}
@@ -136,7 +135,7 @@ From the image then we select a region where the most part of the road appears, 
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.65]{Images/2_Marked_ROI.png}
+\includegraphics[scale=1]{Images/2_Marked_ROI.png}
 \end{center}
 \caption{Selecting the ROI}
 \end{figure}
@@ -169,7 +168,7 @@ The Figure 7 below indicated the convex hull of the largest contours selected fr
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.65]{Images/6_Convex_hull.png}
+\includegraphics[scale=1]{Images/6_Convex_hull.png}
 \end{center}
 \caption{Convex hull on Original Image}
 \end{figure}
@@ -188,7 +187,7 @@ The Figure 7 below indicated the convex hull of the largest contours selected fr
 
 The extracted road area is then analysed further for pothole visualisation. In computer vision, blob detection methods are aimed at detecting regions in a digital image that differ in properties, such as brightness or color, compared to surrounding regions. Since we assume that pothole appear in the road in different texture than that of the road area mainly in dark shadowed regions some time it appear as though it is covered in mud and water. Since there is a differentiating factor that make pothole identifiable in the road we used blob detection algorithms to highlight the potholes.
 
-\subsection{Contour Detection Method}
+\subsubsection{Contour Detection Method}
 The extracted road area could also be analysed using contour detection or edge detection (Canny edge detection) further for highlighting the presence of the potholes.
 
 \subsection{Machine Learning Techniques}
@@ -211,13 +210,13 @@ The color histogram of the frame is take and is used as feature for training the
 The following list of machine learning techniques were used in the study. They were trained using the above mentioned feature and the results were analysed.
 
 \begin{itemize}
-\item Logistic Regression
-\item Decision Tree
+\item Logistic Regression \cite{lr}
+\item Decision Tree \cite{dt}
 \item AdaBoost using Decision Tree
 \item GaussianNB
-\item KNN
-\item SVM
-
+\item KNN \cite{knn}
+\item SVM \cite{svm}
+\item Random Forest \cite{rf}
 \end{itemize}
 
 \section{Results}
@@ -225,7 +224,7 @@ The following list of machine learning techniques were used in the study. They w
 
 \subsection{Pothole visualisation using Image processing Techniques}
 
-
+The image processing techniques gave us suboptimal results. Method I using morphological transformation didn't work well as there are edges in the roads that created extra contours which were wrongly highlighted as potholes. Method II using road isolation followed by contour detection and edge detection worked for some scenarios but did not work well for most of the cases. Hence pothole visualisation is found difficult to achieve with the current technology as we were not able to find discriminating feature for potholes from our analysis
 
 \subsection{Pothole detection using Machine Learning Techniques}
 
@@ -290,6 +289,11 @@ The table below show the result obtained while using the color histogram as feat
 \end{table}
 \end{center}
 
+As we can infer from the tables that the classification using downscaled images worked well when decision trees and AdaBoost using decision tree are used. Meanwhile Gaussian Naive Bayes performed the worst using downscaled images.
+
+The color histogram as a feature worked relatively better when compared to the downscaled images. We were pretty surprised to see the performance of color histogram using Random Forest which gives at accuracy of 
+95$\%$. SVM didn't give good accuracy in both color histogram as well as downscaled images.
+
 \section{Conclusion}
 The conclusion goes here.
 
@@ -340,15 +344,34 @@ The annotated image dataset used in the pothole detection is freely available at
 \bibitem{pothole}
 \url{https://en.wikipedia.org/wiki/Pothole}
 
+\bibitem{lr}
+\url{https://en.wikipedia.org/wiki/Logistic_regression}
+
+\bibitem{dt}
+\url{https://en.wikipedia.org/wiki/Decision_tree}
+
+\bibitem{knn}
+\url{https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm}
+
+\bibitem{rf}
+\url{https://en.wikipedia.org/wiki/Random_forest}
+
+\bibitem{svm}
+\url{https://en.wikipedia.org/wiki/Support_vector_machine}
+
+\bibitem{dataset1}
+Dataset with negative and positive examples separated
+\url{https://drive.google.com/drive/folders/0B7LHCitTUdEYZFEwNWo4V2RldjQ?usp=sharing}
+
 \end{thebibliography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/akanksha.jpg}}]{Akanksha Dwivedi}
-is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+(MT2016006) is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 \end{IEEEbiography}
 
 % if you will not have a photo at all:
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{anoop.jpg}}]{Anoop Toffy}
-is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+(MT2016016) is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 \end{IEEEbiography}
 
 % insert where needed to balance the two columns on the last page with
@@ -356,11 +379,11 @@ is currenlty pursing Master of Technology from International Institute of Inform
 %\newpage
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/athul.jpg}}]{Athul Suresh}
-is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+(MT2016030) is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 \end{IEEEbiography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Images/tarini.jpg}}]{Tarini Chandrashekhar}
-is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
+(MT2016144) is currenlty pursing Master of Technology from International Institute of Information Technology, Bangalore. 
 
 \end{IEEEbiography}
 
