@@ -1,22 +1,26 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Related Work}{}% 2
 \BOOKMARK [1][-]{section.3}{Proposed Work}{}% 3
-\BOOKMARK [1][-]{section.4}{Methodology}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Image Processing Techniques}{section.4}% 5
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Road Extraction Method}{subsection.4.1}% 6
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Blob Detection Method}{subsection.4.1}% 7
-\BOOKMARK [2][-]{subsection.4.2}{Machine Learning Techniques}{section.4}% 8
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Feature Modelling}{subsection.4.2}% 9
-\BOOKMARK [3][-]{subsubsection.4.2.2}{Machine Learning Algorithms}{subsection.4.2}% 10
-\BOOKMARK [1][-]{section.5}{Results}{}% 11
-\BOOKMARK [2][-]{subsection.5.1}{Pothole visualisation using Image processing Techniques}{section.5}% 12
-\BOOKMARK [2][-]{subsection.5.2}{Pothole detection using Machine Learning Techniques}{section.5}% 13
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 14
-\BOOKMARK [1][-]{section*.10}{Appendix A: Pseudo code for Image processing}{}% 15
-\BOOKMARK [1][-]{section*.11}{Appendix B: Pseudo code for Machine Learning}{}% 16
-\BOOKMARK [1][-]{section*.13}{References}{}% 17
-\BOOKMARK [1][-]{IEEEbiography.0}{Biographies}{}% 18
-\BOOKMARK [2][-]{IEEEbiography.1}{Akanksha Dwivedi}{IEEEbiography.0}% 19
-\BOOKMARK [2][-]{IEEEbiography.2}{Anoop Toffy}{IEEEbiography.0}% 20
-\BOOKMARK [2][-]{IEEEbiography.3}{Athul Suresh}{IEEEbiography.0}% 21
-\BOOKMARK [2][-]{IEEEbiography.4}{Tarini Chandrashekhar}{IEEEbiography.0}% 22
+\BOOKMARK [2][-]{subsection.3.1}{Using morphological transformation}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Using contours and convex hull}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Using Machine Learning Methods}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Methodology}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Image Processing Techniques}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Road Isolation Method}{subsection.4.1}% 9
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Blob Detection Method}{subsection.4.1}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Contour Detection Method}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Machine Learning Techniques}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Feature Modelling}{subsection.4.3}% 13
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Machine Learning Algorithms}{subsection.4.3}% 14
+\BOOKMARK [1][-]{section.5}{Results}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Pothole visualisation using Image processing Techniques}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Pothole detection using Machine Learning Techniques}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 18
+\BOOKMARK [1][-]{section*.10}{Appendix A: Pseudo code for Image processing}{}% 19
+\BOOKMARK [1][-]{section*.11}{Appendix B: Pseudo code for Machine Learning}{}% 20
+\BOOKMARK [1][-]{section*.13}{References}{}% 21
+\BOOKMARK [1][-]{IEEEbiography.0}{Biographies}{}% 22
+\BOOKMARK [2][-]{IEEEbiography.1}{Akanksha Dwivedi}{IEEEbiography.0}% 23
+\BOOKMARK [2][-]{IEEEbiography.2}{Anoop Toffy}{IEEEbiography.0}% 24
+\BOOKMARK [2][-]{IEEEbiography.3}{Athul Suresh}{IEEEbiography.0}% 25
+\BOOKMARK [2][-]{IEEEbiography.4}{Tarini Chandrashekhar}{IEEEbiography.0}% 26

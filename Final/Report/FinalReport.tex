@@ -10,6 +10,7 @@
 \usepackage{subfig}
 \usepackage{multirow}
 \usepackage[section]{placeins}
+\renewcommand\thesection{\arabic{section}}
 
 
 % correct bad hyphenation here
@@ -17,63 +18,19 @@
 
 
 \begin{document}
-%
-% paper title
-% Titles are generally capitalized except for words such as a, an, and, as,
-% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
-% not capitalized unless they are the first or last word of the title.
-% Linebreaks \\ can be used within to get better formatting as desired.
-% Do not put math or special symbols in the title.
 \title{Vehicle Driving Assistant}
-%
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
-
 \author{Akanksha~Dwivedi,
         Anoop~Toffy,
         Athul~Suresh,
         and~Tarini~Chandrashekhar,~\IEEEmembership{International Institute of Information Technology, Bangalore}}% <-this % stops a space
 
 
-% note the % following the last \IEEEmembership and also \thanks - 
-% these prevent an unwanted space from occurring between the last author name
-% and the end of the author line. i.e., if you had this:
-% 
-% \author{....lastname \thanks{...} \thanks{...} }
-%                     ^------------^------------^----Do not want these spaces!
-%
-% a space would be appended to the last name and could cause every name on that
-% line to be shifted left slightly. This is one of those "LaTeX things". For
-% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
-% "AB" then you have to do: "\textbf{A}\textbf{B}"
-% \thanks is no different in this regard, so shield the last } of each \thanks
-% that ends a line with a % and do not let a space in before the next \thanks.
-% Spaces after \IEEEmembership other than the last one are OK (and needed) as
-% you are supposed to have spaces between the names. For what it is worth,
-% this is a minor point as most people would not even notice if the said evil
-% space somehow managed to creep in.
-
 
 
 % The paper headers
 \markboth{Project Report, \today}%
 {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
-% The only time the second header will appear is for the odd numbered pages
-% after the title page when using the twoside option.
-% 
-% *** Note that you probably will NOT want to include the author's ***
-% *** name in the headers of peer review papers.                   ***
-% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
-% you desire.
 
-% use for special paper notices
 \IEEEspecialpapernotice{(Draft Paper)}
 
 % make the title area
@@ -109,7 +66,7 @@ The project aims to provide a comprehensive set of assistance features to aid th
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[scale=0.035]{Images/pothole_example.JPG}
+\includegraphics[scale=0.065]{Images/pothole_example.JPG}
 \end{center}
 \caption{Pothole example}
 \end{figure}
@@ -126,10 +83,21 @@ In Nienaber et al (2015) \cite{paperone}, a system using basic image processing 
 The work presented by Ajit Danti et al (2012) \cite{papertwo}, presents a comprehensive approach to address the acute problems of Indian roads such as faded lanes, irregular potholes, improper and invisible road signs. Instead of using image processing techniques for pothole detection as done by Nienaber et al (2015), Ajith Danti et al (2012) uses K-Means clustering based algorithm to detect potholes. By addressing the acute problems above mentioned in the paper it makes automated driving safer and easier in Indian roads. 
 
 \section{Proposed Work}
-In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. At first we used a Digital camera mounted on the window of a slow moving vehicle to capture the potholes images. The images are captured at high resolution so that the analysis of the potholes will be easier. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes.
+In this paper we use both image processing techniques as well as machine learning to study the presence and occurrence of potholes. At first we used a Digital camera mounted on the window of a slow moving vehicle (40km/hr) to capture the potholes images. The images are captured at high resolution so that the analysis of the potholes will be easier. This paper propose a way to visualize the potholes as well as identify whether or not the road has a pothole in it. The visualisation approach is similar to how humans perceive the pothole images in the brain. The pothole identification approach will help to signal the driver of a vehicle to take preventive actions upon pothole infected lanes. 
 
-For visualising the pothole we first extract a region of the interest from the given image which will contain the road area. Since extracting the road area will help to narrow down the area of interest. This way we will be able to prevent the irrelevant informations from the analysis like foliage, vehicle hood, other vehicles on the road etc. We then apply image processing techniques like contour detection, blob detection and edge detection to draw a bounding box over the area of the road which contains the potholes.
+The subsequent subsection describes the approaches we took for visualising the potholes. We used contour detection after applying morphological transformation as a method I and then we used contour detection after extracting the road area by using convex hull algorithms in method II. The methods are described in detail below.
 
+\subsection{Using morphological transformation}
+
+Morphological Transformations, we used erosion to detect contours around potholes in the images. Gaussian Blur and thresholding was applied on the input frames to remove the noise signals from the image. The results of Image Gradients: Laplacian, Sobel X, Sobel Y were compared, after applying them on the blurred image. Among all, Sobel Y, performed the best. Then, erosion was applied to this output frame, with the medium sized kernel, to narrow down the search for potholes in the frames. Contours were being detected in the final frame. This technique worked on the Google Images dataset with partial noise being detected but detected
+too much noise in our dataset along with a fraction of potholes.
+
+
+\subsection{Using contours and convex hull}
+
+For visualising the pothole we first extract a region of the interest from the given image which will contain the road area. This is done by first selecting the largest contour on the images ROI and then drawing convex hull using convex hull algorithm. Since extracting the road area will help to narrow down the area of interest. This way we will be able to prevent the irrelevant informations from the analysis like foliage, vehicle hood, other vehicles on the road etc. We then apply image processing techniques like contour detection, blob detection and edge detection to draw a bounding box over the area of the road which contains the potholes.
+
+\subsection{Using Machine Learning Methods}
 For machine learning technique we use annotated dataset \cite{dataset} for training various classifiers and then try various machine learning algorithms to figure out the presence of a pothole in the frame given.
 
 \section{Methodology}
@@ -138,13 +106,13 @@ In this section we briefly familiarize the methodology that we used for the visu
 
 \subsection{Image Processing Techniques}
 
-\subsubsection{Road Extraction Method}
+\subsubsection{Road Isolation Method}
 
 The figure 2 show the image that we collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/0_Original.png}
+\includegraphics[scale=0.65]{Images/0_Original.png}
 \end{center}
 \caption{Pothole Image}
 \end{figure}
@@ -152,37 +120,41 @@ The figure 2 show the image that we collected from the Digital camera. The image
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/1_HSV.png}
+\includegraphics[scale=0.65]{Images/1_HSV.png}
 \end{center}
 \caption{Converting to HSV}
 \end{figure}
 
-From the 
+From the image then we select a region where the most part of the road appears, since we are using a fixed camera mounted on the window of a moving vehicle we assume that the road area tend to appear on a fixed region above the hood of the vehicle. Hence we select a Region of Interest from the (ROI) image as show in figure 4.
+
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/2_Marked_ROI.png}
+\includegraphics[scale=0.65]{Images/2_Marked_ROI.png}
 \end{center}
 \caption{Selecting the ROI}
 \end{figure}
 
+Figure 5 shows the enlarged ROI of the image. Then we convert the image to a binary image by selecting the gray scale channel. We apply thresholding on the binary image as show in the figure 6. Then the image is analysed using contour detection to find out the largest appearing contour in the selected ROI to extract the road area form the image. This largest contour servers as the mask for extracting the road. 
+
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/3_ROI.png}
+\includegraphics[scale=0.65]{Images/3_ROI.png}
 \end{center}
 \caption{Region of Interest}
 \end{figure}
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/4_Mask.png}
+\includegraphics[scale=0.65]{Images/4_Mask.png}
 \end{center}
 \caption{Mask}
 \end{figure}
 
+The Figure 7 below indicated the convex hull of the largest contours selected from the thresholded images. This largest contour is used a mask to extract the road area as how in the Figure 9.
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/5_Convex_hull_of_largest_contour.png}
+\includegraphics[scale=0.65]{Images/5_Convex_hull_of_largest_contour.png}
 \end{center}
 \caption{Convex hull of largest contour}
 \end{figure}
@@ -190,7 +162,7 @@ From the
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/6_Convex_hull.png}
+\includegraphics[scale=0.65]{Images/6_Convex_hull.png}
 \end{center}
 \caption{Convex hull on Original Image}
 \end{figure}
@@ -198,14 +170,19 @@ From the
 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/7_Result.png}
+\includegraphics[scale=0.65]{Images/7_Result.png}
 \end{center}
 \caption{Extracted Road}
 \end{figure}
 
+\newpage
 
 \subsubsection{Blob Detection Method}
 
+The extracted road area is then analysed further for pothole visualisation. In computer vision, blob detection methods are aimed at detecting regions in a digital image that differ in properties, such as brightness or color, compared to surrounding regions. Since we assume that pothole appear in the road in different texture than that of the road area mainly in dark shadowed regions some time it appear as though it is covered in mud and water. Since there is a differentiating factor that make pothole identifiable in the road we used blob detection algorithms to highlight the potholes.
+
+\subsection{Contour Detection Method}
+The extracted road area could also be analysed using contour detection or edge detection (Canny edge detection) further for highlighting the presence of the potholes.
 
 \subsection{Machine Learning Techniques}
 
@@ -213,11 +190,13 @@ In this section we describe in details the various machine learning techniques t
 
 \subsubsection{Feature Modelling}
 
-We used SIFT and SURF detectors to extract feature from the image and train the classifier.
+We used SIFT and SURF detectors to extract feature from the image and train the classifier. Also we used histogram as identifying feature.
+
 
 \subsubsection{Machine Learning Algorithms}
 
 \begin{itemize}
+
 \item SVM
 
 \item KNN
