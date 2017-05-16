@@ -10,6 +10,10 @@
 \usepackage{subfig}
 \usepackage{multirow}
 \usepackage[section]{placeins}
+
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+
 \renewcommand\thesection{\arabic{section}}
 
 
@@ -190,21 +194,31 @@ In this section we describe in details the various machine learning techniques t
 
 \subsubsection{Feature Modelling}
 
-We used SIFT and SURF detectors to extract feature from the image and train the classifier. Also we used histogram as identifying feature.
+The feature extraction is done in two ways 
+\begin{itemize}
+\item Downscaled images as features
+The image is downscaled into lower resolution and then flattened to be used as a feature.
+\item Color histogram as a feature 
+The color histogram of the frame is take and is used as feature for training the classifier.
+\end{itemize}
 
 
 \subsubsection{Machine Learning Algorithms}
 
+The following list of machine learning techniques were used in the study. They were trained using the above mentioned feature and the results were analysed.
+
 \begin{itemize}
 
-\item SVM
-
+\item Decision Tree
+\item AdaBoost using Decision Tree
+\item GaussianNB
 \item KNN
+\item SVM
 
 \end{itemize}
 
 \section{Results}
-We collected a set of images from various lightening conditions for our analysis. The annotation of the potholes has been done manually. The data set is then divided into Positive and Negative samples. 
+
 
 \subsection{Pothole visualisation using Image processing Techniques}
 
@@ -212,8 +226,26 @@ We collected a set of images from various lightening conditions for our analysis
 
 \subsection{Pothole detection using Machine Learning Techniques}
 
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\begin{tabular}{@{}|l|r|@{}}
+\toprule
+\rowcolor[HTML]{C0C0C0} 
+Methods                      & Accuracy(\%) \\ \midrule
+Decision Tree                & 86.88        \\ \midrule
+AdaBoost using Decision Tree & 80.32        \\ \midrule
+GaussianNB                   & 44.26        \\ \midrule
+KNN                          & 73.77        \\ \midrule
+SVM                          & 55.73        \\ \bottomrule
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
 
-A table containing the accuracy of the ML techniques that we used.
 
 \section{Conclusion}
 The conclusion goes here.
