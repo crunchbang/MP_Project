@@ -70,9 +70,9 @@ def booya(img):
 
 
 root = "Train Data/Positive Data/"
-test = "Train Data/Positive Data/G0010123.JPG"
+#test = "Train Data/Positive Data/G0010123.JPG"
 images = os.listdir(root)
-path = test
+#path = test
 for i in images:
     img = cv2.imread(root + i)
     img = img[:1800]
