@@ -9,7 +9,7 @@
 \usepackage{hyperref}
 \usepackage{subfig}
 \usepackage{multirow}
-
+\usepackage[section]{placeins}
 
 
 % correct bad hyphenation here
@@ -140,44 +140,72 @@ In this section we briefly familiarize the methodology that we used for the visu
 
 \subsubsection{Road Extraction Method}
 
-\begin{figure}[!h]
+The figure 2 show the image that we collected from the Digital camera. The image is then converted to its corresponding HSV channel because we found out the HSV channels are good for analysing the image with various image processing techniques. 
+
+\begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/roi.jpg}
+\includegraphics[scale=0.25]{Images/0_Original.png}
 \end{center}
-\caption{ROI Selection}
+\caption{Pothole Image}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/roi.jpg}
+\includegraphics[scale=0.25]{Images/1_HSV.png}
+\end{center}
+\caption{Converting to HSV}
+\end{figure}
+
+From the 
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[scale=0.25]{Images/2_Marked_ROI.png}
+\end{center}
+\caption{Selecting the ROI}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[scale=0.25]{Images/3_ROI.png}
+\end{center}
+\caption{Region of Interest}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[scale=0.25]{Images/4_Mask.png}
 \end{center}
 \caption{Mask}
 \end{figure}
 
-\begin{figure}[!h]
+
+\begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/roi.jpg}
+\includegraphics[scale=0.25]{Images/5_Convex_hull_of_largest_contour.png}
 \end{center}
-\caption{Application of Mask}
+\caption{Convex hull of largest contour}
 \end{figure}
 
-\begin{figure}[!h]
+
+\begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.25]{Images/roi.jpg}
+\includegraphics[scale=0.25]{Images/6_Convex_hull.png}
+\end{center}
+\caption{Convex hull on Original Image}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[scale=0.25]{Images/7_Result.png}
 \end{center}
 \caption{Extracted Road}
 \end{figure}
 
+
 \subsubsection{Blob Detection Method}
 
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[scale=0.25]{Images/roi.jpg}
-\end{center}
-\caption{Highlighted Contours of Potholes}
-\end{figure}
 
 \subsection{Machine Learning Techniques}
 
